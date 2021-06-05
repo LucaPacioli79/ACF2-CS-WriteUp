@@ -1,7 +1,12 @@
 ---
 title: 
 output: pdf_document
+
 ---
+```{r Load Packages, include=FALSE}
+library(bookdown)
+```
+
 
 ![](CS_cover.pdf)
 
@@ -21,7 +26,73 @@ output: pdf_document
 # Section 3
 
 
-# Section 4
+# Valuation - Did The Market Overreact?
+
+In this section, we will try to estimate the intrinsic value of Credit Suisse in relation to the share price first before the Archegos blowout with data from 31.12.2020 and then after Archegos, using all available data published by Credit Suisse, Bloomberg estimates and our own calculations.
+
+For the valuation, we will use a simple peers-multiple comparison as well as the Equity Excess Returns model, presented in the book *Investment Valuation* by Aswath Damodaran.
+
+## Equity Excess Returns (EER)
+
+Since valuing financial services companies, such as banks, is rather different given their unique financing capital structure, we will be using the EER model. It bypasses the standard problem of defining total capital or free cash-flows of a financial services company by not taking them into account at all and focusing only on equity.
+
+From there, the logic of standard valuation methodology is consistent with other valuation methods, meaning that the value is determined as the sum of equity capital invested currently (Book Value) and the *present value of expected excess return to equity investors*. (Unless stated otherwise, we are presenting all values and calculation on a *per share basis*)
+
+$$
+      \text{Value of Equity} =  BV_{t-1} + \sum_{t=1}{\frac{\text{Equity Excess Return}_t}{(1+\text{Cost of Equity})^t}}
+$$
+While book value of the firm is virtually given and can be read off of the financial statements, EER are the part we have to calculate and impose certain assumptions and limits, which we will discuss further in the next part.
+
+Before we do that, let us first show how EER is calculated:
+
+$$
+EER = (ROE_t-\text{Cost of Equity}_t) \times BV_t
+$$
+
+The intuition behind this calculation is very simple: the excess return to the equity of the firm is everything the firms earns on its equity/capital invested (Book value) minus the cost necessary to use to produce those returns.
+
+Moreover, we need to know or rather estimate the book value of the firm for each year. That we can do, under certain assumptions, by adding net income net of dividends (retained earnings) from the previous year to the book value from the previous year. The assumption is that those retained earnings will be added to book value and further reinvested, producing more earnings.
+
+$$
+BV_{t+1} = BV_t + EPS_t\times(1-\text{dividend payout ratio})
+$$
+
+## Standard Assumptions of the Model
+
+### Book value as a measure of equity capital invested
+
+We assume that book value of the firm is equal to the equity capital invested. While it certainly might be influenced by accounting decision and procedures, the fact we are using it for financial services company makes it a sufficiently reliable measure. This stems from the fact that:
+
+- most assets of a financial services firms are financial assets and are marked up to market, which makes the valuation precise
+- depreciation, which is normally a big factor influencing book value of manufacturing firms, is negligible with financial services firms.
+
+### Discount rate 
+
+Since we are focusing only on equity and the excess returns of equity, the most consistent approach for discounting is to discount these excess returns with the cost of equity. One of the assumptions is that this rate remains constant, i.e. we are able to use the same discount rate for the whole valuation.
+
+### Number of periods
+
+Per default, this model calculates EER only till year 5 and assumes that after year 5, the cost of equity will be equal to ROE, making EER zero in perpetuity, thus setting the terminal value to zero as well. We will see, however, that in our case this assumption will be modified.
+
+### Constant ROE
+
+Unless we have forecasts of earnings, we assume ROE to be constant across the whole period in order to estimate future earnings, setting it equal either to the value of the last period or using a slightly more sophisticated long-term average and mean reversion method.
+
+### Constant dividend payout ratio
+
+When calculating retained earnings, we subtract the dividend from the net earnings. Not many firms have a strict dividend policy of setting a fixed dividend payour ratio, which is why we will again have to assume that the ratio will remain constant and equal to its long-term average.
+
+## Our setup - Before Archegos (31.12.2020)
+
+
+### Valuation Table
+
+
+## Our setup - After Archegos (31.3.2021)
+
+### Valuation Table
+
+
 
 
 # Section 5
