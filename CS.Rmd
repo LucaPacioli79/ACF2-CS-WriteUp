@@ -23,7 +23,54 @@ library(bookdown)
 # Section 2
 
 
-# Section 3
+# Causes For The Fiasco
+
+In the previous parts we discussed how overleveraged and risky the positions was. It is clear that leverage of the position take a further look on how the leverage was achieved and  more imporatntly , whatmistakes the risk management department might have done, resulting in this riksy positions blowing up.
+
+
+## CS400
+
+
+
+## Failures of the risk mananagement
+
+The system itself was just an instrument allowing to go leveraged unnoticed, but did not cause failre of risk assessment of course. It definitely contributed to the magnitude of the blowout, but was not inherently the culprit of it.
+
+If we want to understand what was, we have to understand how the risk is normally assesed and whether the measured were adhered to by Credit Suisse.
+
+Prime-brokerage is still a little opaque and sparsely regulated business and most regulation deals with the brokers and their capital requirements, not assessing the risk of the client (Archegos in this case). However, one document we can refer to is a speech by M.A. Gadziala from the due dilligence department of SEC from 2007 about common risks in the broker-dealer relationship and how to manage them. here insert citaion.
+
+Among others, there principles we deem the most important and crucial for understanding the case:
+
+- senior management involvement
+- creation/review of internal mathematical models
+- strong overall compliance culture at the firm
+- an effective reconciliation process to ensure data integrity and completeness
+
+In the upcoming sub-sections, we will discuss how these principles were violated and how that ultimately led to the failed risk-assessment. 
+
+### Senior management involvement
+
+This principle ensures that responsibility and accountability within the senior management is maintained and that if the management is aware how much "skin in the game" the company has, they should be more risk-averse.
+
+According to the Wall Street Journal, senior management, including the CEO of Credit Suisse Mr. Thomas Gottstein and the Head of Risk Ms. Lara Warner *did not know about the position with Archegos until shortly before liquidation*. That is a huge violation of the risk management principle.
+
+### Creation/review of internal mathematical models
+
+The financial world, especially risk management, has become largely dependent on sophisticated quantitative tools to measure and control risks. It is no surprise then that the a firm should be up-to-date with the latest developments and apply the best possible models.
+
+Be it because of its size or inflexibility, according to Risk.net and a certain risk manager, Credit Suisse was still using very "1980's"-like models to measure its risks. That is of course very problematic and except for breaking the principles again, one has to ask how Credit Suisse was measuring risk with models from times, when the instruments it was measuring did not even exist yet.
+
+### Strong overall compliance culture at the firm
+
+Strong overall compliance means that not only people directly responsible are ought to take risk-management approaches. We would expect that senior executives would be leading this front, however, contrary was true at Credit Suisse.
+
+According to swissinfo.ch, senior executives were "too eager to chase lucrative deals, overruling risk-management warnings".
+### Effective reconciliation process to ensure data integrity and completeness
+
+
+
+
 
 
 # Valuation - Did The Market Overreact?
