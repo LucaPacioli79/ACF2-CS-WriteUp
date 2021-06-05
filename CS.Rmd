@@ -200,9 +200,7 @@ The inputs obtained from Bloomberg were:
 - Equity premium: 9.06%
 - Beta: 1.42
 
-Beta was obtained using JACOPO PLS HELP HERE
-
-These inputs yielded a justifiably higher cost of equity of 13.45%. In perpetuity however, we assumed it would return to normal "pre-Archegos" level of 11.5%.
+These inputs yielded a justifiably higher cost of equity of 13.45%. In perpetuity however, we assumed that the discount rate will converge back to normal "pre-Archegos" level of 11.5%. This assumption is in line with classical Blume adjustment that aims to capture the mean reversion of the beta.  
 
 This rate was used to calculate the perpetuity EER, whereas *the discount rate used was again the higher, 13.45% value to reflect riskiness of the stock today*.
 
