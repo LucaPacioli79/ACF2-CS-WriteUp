@@ -36,7 +36,7 @@ For the valuation, we will use a simple peers-multiple comparison as well as the
 
 Since valuing financial services companies, such as banks, is rather different given their unique financing capital structure, we will be using the EER model. It bypasses the standard problem of defining total capital or free cash-flows of a financial services company by not taking them into account at all and focusing only on equity.
 
-From there, the logic of standard valuation methodology is consistent with other valuation methods, meaning that the value is determined as the sum of equity capital invested currently (Book Value) and the *present value of expected excess return to equity investors*. (Unless stated otherwise, we are presenting all values and calculation on a *per share basis*)
+From there, the logic of standard valuation methodology is consistent with other valuation methods, meaning that the value is determined as the sum of equity capital invested currently (Book Value) and the *present value of expected excess return to equity investors*. (Unless stated otherwise, we are presenting all values and calculation on a *per share basis* and in Swiss Francs)
 
 $$
       \text{Value of Equity} =  BV_{t-1} + \sum_{t=1}{\frac{\text{Equity Excess Return}_t}{(1+\text{Cost of Equity})^t}}
@@ -72,7 +72,7 @@ Since we are focusing only on equity and the excess returns of equity, the most 
 
 ### Number of periods
 
-Per default, this model calculates EER only till year 5 and assumes that after year 5, the cost of equity will be equal to ROE, making EER zero in perpetuity, thus setting the terminal value to zero as well. We will see, however, that in our case this assumption will be modified.
+Per default, this model calculates EER only till year 5 and assumes that after year 5, the cost of equity will converge to ROE, making EER zero in perpetuity, thus setting the terminal value to zero as well. We will see, however, that in our case this assumption will be modified.
 
 ### Constant ROE
 
@@ -84,16 +84,103 @@ When calculating retained earnings, we subtract the dividend from the net earnin
 
 ## Our setup - Before Archegos (31.12.2020)
 
+### Book value(s)
+
+The first book value comes from the the filling of Credit Suisse obtained from Bloomberg as of 31.12.2020. From there, we calculated the subsequent book values as explained above.
+
+### EPS / Net income
+
+For the first three years, i.e. 2021, 2022 and 2023, we used the the consesus of analysts forecast of the EPS. We feel this approach is more precise than using a constant ROE as in the base model, given the fact Credit Suisse is a stock followed by roughly 300 analysts.
+
+From year four, we grow the earnings by Sustanaible Growth Rate, which is calculated as 10-year average of ROE net of long-term dividend payout ratio. This is method works under the assumption that Credit Suisse will be able to reinvested the retained earnings effectively. In our case the sustainable growth rate was at 1.4%, stemming from 10-year ROE average of 2% and dividend payout ratio of 28.2%, which is both conservative and attainable in our opinion.
+
+
+### Equity cost 
+
+We obtained value of 11.5% from Bloomberg and assume it remaind constant across the whole period.
+
+### Terminal value
+
+The biggest difference between the standard model and our case is that Credit Suisse has a much lower ROE than cost of equity (effectively destroying value by producing negative excess returns), thus it would be unreasonable to assume convergence as in the standard model. For the convergence to happen, either ROE would have to increase or cost of equity would have to decrease dramatically, which is the exact opposite of the intuition of diminishing returns. 
+
+Because of this, we will have to estimate EER also in perpetuity by using the Gordon's Growth Model. However, since we have negative excess return in the future, we flip the sign of the growth rate in the denominator, producing this formula:
+
+$$
+EER_{perpetuity} = \frac{EPS_T}{\text{equity cost} + \text{sustainable growth rate}}
+$$
 
 ### Valuation Table
 
+*Table xx: Equity Excess Returns Valuation Table as of 31.12.2020 for Credit Suisse*
+
+| Year                           | 2021   | 2022   | 2023   | 2024   | 2025   | TV     |
+|--------------------------------|--------|--------|--------|--------|--------|--------|
+| Book Value / Share             | 17.37  | 18.37  | 19.55  | 20.76  | 21.99  | 23.24  |
+| Net Income / Share             | 1.40   | 1.64   | 1.69   | 1.71   | 1.74   | 1.76   |
+| Equity cost in %               | 11.50% | 11.50% | 11.50% | 11.50% | 11.50% | 11.50% |
+| Equity cost / Share            | 2.00   | 2.11   | 2.25   | 2.39   | 2.53   | 2.67   |
+| Equity Excess Return Per Share | -0.60  | -0.48  | -0.56  | -0.67  | -0.79  | -0.91  |
+| Present Value                  | -0.536 | -0.385 | -0.403 | -0.436 | -0.458 | -7.016 |
+| Sum                            |        |        |        |        |        | -3.651 |
+
+
+*Table xx: Estimated Intrinsic Value of Credit Suisse Stock in Relation to Market Price as of 31.12.2020*
+
+|                     |             |
+|---------------------|-------------|
+| Book Value / Share  | 17.36955637 |
+| Sum of EER PV       | -5.86801365 |
+| PV                  | 11.50154272 |
+| Price (31.12.2020)  | 11.4        |
+| Undervaluation      | 0.89%       |
+
+From the valuation and the table above, we can see that our estimated value before the Archegos blowout is almost precisely at the the traded price as of 31.12.2020 with a difference, or undervaluation, of only 0.89%.
 
 ## Our setup - After Archegos (31.3.2021)
 
+Now we move on to the valuation of Credit Suisse *after* the Archegos blowout, where we will observe how the present value changed and if, at all, the market over- or underreacted, according to our valuation.
+
+In the setup, we will discuss only assumption and inputs different from the previous setup, i.e. if not stated otherwise, the assumptions are the same.
+
+### Equity cost
+
+After the blowout, when Credit Suisse reported huge losses and the stock fell considerably, the cost of equity must have increased. We used CAPM to calculate it and again assumed it to remain constant across the valuation period.
+
+The inputs obtained from Bloomberg were:
+
+- Risk-free rate: 10y note of Switzerland; -1.4%
+- Equity premium: 9.06%
+- Beta: 1.42
+
+Beta was obtained using JACOPO PLS HELP HERE
+
+These inputs yielded a justifiably higher cost of equity of 13.45%. In perpetuity however, we assumed it would return to normal "pre-Archegos" level of 11.5%.
+
+This rate was used to calculate the perpetuity EER, whereas *the discount rate used was again the higher, 13.45% value to reflect riskiness of the stock today*.
+
 ### Valuation Table
 
+*Table xx: Equity Excess Returns Valuation Table as of 31.3.2021 for Credit Suisse*
 
+| Year                           | 2021 (as of March) | 2022   | 2023   | 2024   | 2025   | TV     |
+|--------------------------------|--------------------|--------|--------|--------|--------|--------|
+| Book Value / Share             | 18.23              | 18.77  | 19.81  | 20.96  | 22.13  | 23.32  |
+| Equity cost in %               | 13.45%             | 13.45% | 13.45% | 13.45% | 13.45% | 11.50% |
+| Equity cost / Share            | 2.45               | 2.52   | 2.66   | 2.82   | 2.98   | 2.68   |
+| Equity Excess Return Per Share | -1.8               | -1.1   | -1.1   | -1.2   | -1.3   | -1.0   |
+| Present Value                  | -1.648             | -0.835 | -0.722 | -0.716 | -0.703 | -7.735 |
+|                                |                    |        |        |        |        | -3.63  |
 
+*Table xx: Estimated Intrinsic Value of Credit Suisse Stock in Relation to Market Price as of 31.3.2021*
+
+| Book Value / Share  | 18.23  |
+|---------------------|--------|
+| Sum of EER PV       | -8.251 |
+| Estimated price     | 9.97   |
+| Price (31.3.2021)   | 9.90   |
+| Undervaluation      | 0.73%  |
+
+According to our valuation, we can see we arrive to intrinsic value that is almost precisely at the price from the end of March, with undervaluation of .73%. Assuming our inputs are correct and assumptions full-filled, we can conclude that the market reaction to the Archegos blowout was appropriate.
 
 # Section 5
 
