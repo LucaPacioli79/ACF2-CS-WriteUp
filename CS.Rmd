@@ -3,6 +3,8 @@ title:
 output:
   pdf_document: default
   word_document: default
+  TOC : true 
+    
 ---
 ```{r Load Packages, include=FALSE}
 library(bookdown)
@@ -15,13 +17,65 @@ library(shiny)
 
 # Introduction
 
+In this paper we will discuss how Archegos Capital, the family office owned by Bill Hwang, defaulted on margin calls with more than \$30 Billion exposure and how it affected Credit Suisse, who was the last bank to exit the relationship with the family office. We portray the relationship of Archegos Capital with Credit Suisse, and show how by using TRS the family office built undetectable massive and leveraged positions on a few companies.  
 
-# Section 1
+We investigate how top officers at Credit Suisse were lured by fees and viewed the deal that was presented by Bill Hwang as low risk as presented to its clients, and show how the bank had not instituted the proper mathematical models to handle the intricate nature of the TRS, and how the opaque and lacking reporting done by Archegos Capital - who evaded supervision by using the TRS and by being a family office - led Credit Suisse to form a blurred picture of its exposure to Archegos. 
 
-## Subsection
+Moreover, Credit Suisse exacerbated its losses by maintaining a friendly stance toward the family office, being the last to exit the positions whereas other banks were left with smaller losses even though they had similar exposure to Archegos. To conclude this paper, we provide a valuation of Credit Suisse and how the Archegos Capital crisis will impact the bank’s value, and add some suggestions as to what practices could Credit Suisse implement to avoid such fallouts in the future.  
 
-### Subsub..
+# TRS
 
+The Total Return Swap (TRS) is a special kind of derivative contract thanks to which two counterparties exchange the total return of an asset - or of a number of assets - for a guarantee against any capital losses and a fee. The fee is a periodic cash flow which is composed of a variable rate (e.g. LIBOR) and a fixed spread. The party which holds the underlying asset and that pays the total return of it, is known as the TRS payer while the party receiving the total return and paying out the fees is called TRS receiver. 
+
+![Model example of a TRS contract](pics/TRS_example.png)
+
+The margin and the fixed spread required by the TRS payer are strictly linked. As a rule of thumb, the lower the margin required by the TRS payer, the higher the leverage of the TRS receiver, the higher the counterparty risk bared by the TRS payer, the higher will be the fixed spread required on top of the variable rate by the TRS payer. 
+As a consequence, this instrument is constructed in such a way that at inception the Net Present Value (NPV) of the transaction equals zero. 
+ ​ 
+The TRS holds benefits and disadvantages for both parties on different scales.  
+On the one side of the transaction, engaging into a TRS, a total return receiver, can reap off the benefits of anonymity because it has exposure to the underlying asset without actually holding it in first person. Since the receiver of the swap does not hold the asset, it is not obliged to disclose the position because materially he is not the holder; the total return payer is. Moreover, entering a TRS, the receiver of the total return can obtain very high amounts of leverage depending on the margin required by the payer.  
+The main disadvantage for total return receiver is that it bears the whole investment return risk of the underlying transaction. As it was pointed out earlier, the receiver must be ready to back-up a depreciation in the underlying asset at any point in time. ​ 
+ 
+On the other side of the transaction, trading a TRS, a total return payer, can transform a risky bet on a stock into a risk-less profit at the cost of holding the underlying asset directly and writing it on its balance sheet. ​  
+The disadvantage for the swap payer is the default risk of the receiver. The entities engaging into a TRS as receivers are usually hedge funds which are known to accumulate a lot of leverage on these positions and to concentrate this leverage on rather similar assets. This is a rather dangerous practice because in case of a strong market downtrend a total return receiver could default on the TRS if it is not adequality capitalized (i.e. not able to back-up the capital depreciation of the underlying asset). If the default materializes, the risk for the total return payer is to remain stuck with the underlying asset and with the capital loss deriving from it. At this point the choices that the swap payer is left with are just a few which depend on the specific situation and market conditions: liquidating the underlying little by little in the market, liquidating the underlying in block trades or continuing to hold it.  
+ 
+In order to bring the TRS in the context of our case study, let’s now examine a straightforward fictitious example of what such a transaction involves and what could be the different outcomes depending on the materialized future market scenario.  
+Suppose Credit Suisse and Archegos, namely the payer and the receiver of the swap, underwrite a TRS with maturity one year on a fictitious underlying asset (pool of Chinese tech stocks) for a principal amount of 10 million USD with a margin of 10%. Trading this swap, Archegos gets 10 times leverage exposure to the underlying asset without holding it directly and in exchange for this it pays Credit Suisse a fee composed of a variable rate (LIBOR) plus a fixed spread of 2%.  
+## Scenario 1: win-win
+
+
+![Scenario 1: Win-win situation](pics/scenario1.png) 
+
+LIBOR = 1% and underlying asset appreciated by 6%
+Net Profit for Credit Suisse = (1% + 2%) 10MM = 300,000 USD 
+Net Profit for Archegos = [6% - (1% + 2%)] 10MM = 300,000 USD 
+ 
+In scenario 1, the underlying asset appreciated and the resulting transaction yields a win – win type scenario in which both the payer and the receiver of the swap profit. 
+
+## Scenario 2: lose-win
+
+LIBOR = 1% and underlying asset appreciated by 1%
+
+Net Profit for Credit Suisse = (1% + 2%) 10MM = 300,000 USD 
+Net Profit for Archegos = [1% - (1% + 2%)] 10MM = -200,000 USD 
+ 
+In scenario 2, the underlying asset appreciated only slightly and the resulting transaction yields a lose – win type scenario in which the payer of the swap profits from the fees received and the receiver loses because the capital appreciation of the asset is lower than the amount of fees that it has to pay. In this scenario we assume that Archegos is liquid enough and is able to pay the fees to Credit Suisse (we rule out counterparty default risk). 
+
+![Scenario 1: Lose-win situation](pics/scenario2.png) 
+
+## Scenario 3: lose-lose situation
+
+LIBOR = 1% and underlying asset depreciated by 20%
+
+Pending Loss for Archegos = [20% + (1% + 2%)] 10MM = 2,300,000 USD 
+ 
+We assume that Archegos defaults on the TRS because it is not able to back-up the depreciation of the underlying asset due to high leverage and liquidity constraints. 
+ 
+In scenario 3, the underlying asset suffered a steep decline in price due to adverse market conditions and the resulting transaction yields a lose – lose type scenario in which the payer of the swap cannot recover the capital depreciation and the fees by the receiver of the swap due to its default. Now Credit Suisse is stuck with the underlying pool of risky assets which keeps depreciating in the market due to the fire sale of other institutions and investors.  
+
+
+
+![Scenario 3: lose-lose situation](pics/scenario3.png) 
 
 # The Role of Leverage
 
@@ -46,7 +100,38 @@ The Form 13F is a mandatory quarterly report to the Securities and Exchange Comm
 
 With the assumptions that the holdings remained constant since the end of the fourth quarter of 2020, namely December 31, the exposure of the banks on these stocks can be estimated for March 22, the day Archegos defaulted. Figure X shows these exposures for the banks side-by-side to their reported losses. And we can see that Morgan Stanley and Credit Suisse had by far the biggest exposure by the end of 2020 with around \$10 to \$12 billion. These two banks alone took half of the share of the total estimated exposure of \$41 billion. They are followed by Goldman Sachs and Nomura (around \$6 billion) while UBS and Deutsche Bank’s exposure was less than $4 billion. We can also see that, relative to their exposure, some banks like Morgan Stanley and Goldman Sachs got away with much lower losses than others (Credit Suisse and Nomura). Note that the losses in the Figure X were set to zero Goldman Sachs and Deutsche Bank which reported “immaterial losses” or were “not expect to incur any loss”. https://www.businesstimes.com.sg/banking-finance/deutsche-bank-avoids-archegos-loss-after-slow-hedge-fund-exit  
 
+![Estimated exposure (per March 22) and reported losses](pics/cs1.png)
 
+
+
+## Estimated losses
+
+Assuming that the prime brokers held onto their stocks after the announcement that Archegos couldn’t follow up on the margin calls, the closing price can be used to compute the unmargined estimated losses by the end of the week, March 26. The same calculations can be done for various margin levels. Figure X shows the banks’ estimated cumulative losses for different margin rates (10, 15, 20 and 25%). With increasing margins, the estimated losses are naturally decreasing. Likewise, the estimated losses are increasing with higher initial exposure. 
+ 
+What the figure doesn’t show is the effect of moral hazard due to varying leverages which can be taken on. Lower margins increase the incentives to take riskier positions because the hedge fund has less skin in the game and doesn’t have to suffer as much from possible consequences in the case the investments go south. Also, note that that these numbers are probably significantly underestimated. As we have previously seen, most of the stock concerned were soaring in the beginning of the year 2021. And therefore, Archegos through his prime brokers was most likely to top on these stocks to ride on the bullish stocks/market. 
+
+## Suggested margins
+
+Taking these points into consideration and given the Credit Suisse’s disclosed loss of \$4.7 billion, their margin can be estimated to be around 10% - assuming that they would not have done anything to reduce their positions by March 26. In Figure X, a 10% margin suggests an estimated loss of \$3.3 billion. First reports which estimated a between \$3 and \$4 billion strengthen the suggestion that Credit Suisse margin might not be far from 10% and that they significantly held more positions by the time of Archegos’ defaults compared to the end of 2020. Thereby, competitive banks did ask for a significantly higher margins, at least 20%, an only 5x leverage as opposed to the 10x of Credit Suisse. Deutsche Bank was even reported to increase their collateral from Archegos during the surging of the stocks they held in his stead. https://www.wsj.com/articles/deutsche-bank-avoids-archegos-meltdown-reports-profit-surge-11619589444#:~:text=Markets%20Alert&text=and%20Morgan%20Stanley%2C%20Deutsche%20Bank,sell%20off%20its%20exposure%20quickly. So, despite that Morgan Stanley was similarly exposed to Credit Suisse, the former’s estimated losses were almost half as much due to their stricter leverage demands. 
+ 
+Credit Suisse’s 10% margin is also lower than the postponed introduction of 15% initial margin requirement on equity swaps which will now take effect starting October 6, 2021. So, while leverage has a proportionally big effect and would certainly have helped in the reducing the damage, the overall losses are still very high, i.e. a high margin of 25% with a moderate (here average) exposure of \$7 billion would still have resulted in an estimated loss of around $1’000 million! Thus, restrictions on leverage should not be the only response in the aftermath and naturally leads to the question, why the losses could possibly take such tremendous dimensions due to the default of a single individual actor of the financial market.
+
+![The banks’ estimated cumulative losses for different levels of margin](pics/cs2.png)
+
+
+## Overall high losses
+
+Figure X shows the banks’ holding of Archegos-linked stocks and provides some insights, how the losses could be overall so high. We can see that the banks were holding huge shares of these companies. In most cases, around 20% (Vishop, ViacomCBS, Tencent and Farfetch), and in single cases around 30% (iQYI, Discovery). In the extreme case, GSX Techedu, the prime brokers together owned almost half of the company! We can also see that Credit Suisse hold large shares even compared to the other competitive banks. Like previously, the true numbers are likely to be significantly higher because the holdings based on the filings at the end of 2020. It has been reported that Goldman Sachs increased their stake in GSX Techedu by more than 8% to 24.6% on January 29. Hence, out of the eight stocks, Credit Suisse owned in at least five instances more than 5% of the companies. 
+ 
+Usually, if a person or a group acquires more than 5% of a company’s shares or oversee and material changes of 1% or more, they have to adhere to the SEC’s 13D or 13G disclosure rule and report their positions. By using synthetic financial instruments in the form of total return swap, Archegos hid their positions and obscured the risk, and therefore was able to hold a heavily directional portfolio - unknown to all the counterparties involved, which in the end led to these overall very high losses. 
+
+## Regulations 
+
+The same fiasco would have probably not been possible in Europe, since in the majority of West European countries public disclosure of total return swaps exists, and thus, any positions do count towards the total holding of the stock which allows for more transparency, and hence, better risk-management. https://www.risk.net/regulation/7831691/could-an-archegos-blindside-banks-in-europe-not-really. So far, total return swaps have not been covered by any US disclosure rule. It’s been reported that the SEC is currently working on new reporting rules, i.e. including them into existing transparency rule like the disclosure form 13D or let positions count towards the 5% to bring it in line with Europe. https://www.risk.net/derivatives/7831091/credit-suisse-and-the-wild-west-of-synthetic-prime-brokerage 
+ 
+Nevertheless, it’s shocking to see, even after the financial crisis more than a decade ago, how slow the financial industry has moved to implement the necessary reforms and regulations to ensure more transparency in these exact trades of financial instruments. 
+
+![Bank's holding of Archegos-linked stocks](pics/cs3.png)
 \pagebreak 
 
 # Causes For The Fiasco
