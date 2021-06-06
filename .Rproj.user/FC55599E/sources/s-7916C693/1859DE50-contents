@@ -1,11 +1,14 @@
 ---
 title: 
 output:
-  pdf_document: default
-  word_document: default
-  TOC : true 
-    
+  pdf_document:
+bibliography: references.bib
+     
+       
+      
+
 ---
+
 ```{r Load Packages, include=FALSE}
 library(bookdown)
 library(citr)
@@ -16,6 +19,7 @@ library(shiny)
 ![](CS_cover.pdf)
 
 # Introduction
+
 
 In this paper we will discuss how Archegos Capital, the family office owned by Bill Hwang, defaulted on margin calls with more than \$30 Billion exposure and how it affected Credit Suisse, who was the last bank to exit the relationship with the family office. We portray the relationship of Archegos Capital with Credit Suisse, and show how by using TRS the family office built undetectable massive and leveraged positions on a few companies.  
 
@@ -34,13 +38,14 @@ As a consequence, this instrument is constructed in such a way that at inception
  ​ 
 The TRS holds benefits and disadvantages for both parties on different scales.  
 On the one side of the transaction, engaging into a TRS, a total return receiver, can reap off the benefits of anonymity because it has exposure to the underlying asset without actually holding it in first person. Since the receiver of the swap does not hold the asset, it is not obliged to disclose the position because materially he is not the holder; the total return payer is. Moreover, entering a TRS, the receiver of the total return can obtain very high amounts of leverage depending on the margin required by the payer.  
-The main disadvantage for total return receiver is that it bears the whole investment return risk of the underlying transaction. As it was pointed out earlier, the receiver must be ready to back-up a depreciation in the underlying asset at any point in time. ​ 
+The main disadvantage for total return receiver is that it bears the whole investment return risk of the underlying transaction. As it was pointed out earlier, the receiver must be ready to back-up a depreciation in the underlying asset at any point in time.
  
 On the other side of the transaction, trading a TRS, a total return payer, can transform a risky bet on a stock into a risk-less profit at the cost of holding the underlying asset directly and writing it on its balance sheet. ​  
 The disadvantage for the swap payer is the default risk of the receiver. The entities engaging into a TRS as receivers are usually hedge funds which are known to accumulate a lot of leverage on these positions and to concentrate this leverage on rather similar assets. This is a rather dangerous practice because in case of a strong market downtrend a total return receiver could default on the TRS if it is not adequality capitalized (i.e. not able to back-up the capital depreciation of the underlying asset). If the default materializes, the risk for the total return payer is to remain stuck with the underlying asset and with the capital loss deriving from it. At this point the choices that the swap payer is left with are just a few which depend on the specific situation and market conditions: liquidating the underlying little by little in the market, liquidating the underlying in block trades or continuing to hold it.  
  
 In order to bring the TRS in the context of our case study, let’s now examine a straightforward fictitious example of what such a transaction involves and what could be the different outcomes depending on the materialized future market scenario.  
-Suppose Credit Suisse and Archegos, namely the payer and the receiver of the swap, underwrite a TRS with maturity one year on a fictitious underlying asset (pool of Chinese tech stocks) for a principal amount of 10 million USD with a margin of 10%. Trading this swap, Archegos gets 10 times leverage exposure to the underlying asset without holding it directly and in exchange for this it pays Credit Suisse a fee composed of a variable rate (LIBOR) plus a fixed spread of 2%.  
+Suppose Credit Suisse and Archegos, namely the payer and the receiver of the swap, underwrite a TRS with maturity one year on a fictitious underlying asset (pool of Chinese tech stocks) for a principal amount of 10 million USD with a margin of 10%. Trading this swap, Archegos gets 10 times leverage exposure to the underlying asset without holding it directly and in exchange for this it pays Credit Suisse a fee composed of a variable rate (LIBOR) plus a fixed spread of 2%. 
+
 ## Scenario 1: win-win
 
 
@@ -81,9 +86,11 @@ In scenario 3, the underlying asset suffered a steep decline in price due to adv
 
 ## SEC Form 13F
 
-Due to the current state of the regulations and the use of total return swaps, Archegos did not report any of its positions, and therefore, we do not know the exact amount of leverage Archegos had from the different prime brokers. Instead, the analysts from Risk.net computed the estimated losses based on the 13F filings for seven affected prime brokers and compared those to the reported losses to assess the margins. The banks considered for these calculations were Morgan Stanley, Credit Suisse, Goldman Sachs, Nomura, UBS and Deutsche Bank. https://www.risk.net/risk-management/7827796/credit-suisse-held-just-10-margin-against-archegos-book 
+Due to the current state of the regulations and the use of total return swaps, Archegos did not report any of its positions, and therefore, we do not know the exact amount of leverage Archegos had from the different prime brokers. Instead, the analysts from Risk.net computed the estimated losses based on the 13F filings for seven affected prime brokers and compared those to the reported losses to assess the margins. The banks considered for these calculations were Morgan Stanley, Credit Suisse, Goldman Sachs, Nomura, UBS and Deutsche Bank. [@noauthor_credit_2021]
  
-The Form 13F is a mandatory quarterly report to the Securities and Exchange Commission (SEC) if the assets managed by an institutional investment manager exceed $100 million. Thereby, a institutional investment manager is defined as 1) an entity that either invests in, or buys and sells, securities for its own account or 2) a natural person or an entity that exercises investment discretion over the account of any other natural person or entity. The information which are disclosed are among others the issuer name, the class of security, the numbers of shares owned and the fair market value of the listed securities by the end of the calendar quarter. https://www.sec.gov/divisions/investment/13ffaq.htm The filings are due within 45 days after the end of the quarter, which is for the 4Q 2020, the February 16, 2021, and show the banks’ holdings on the following eight Archegos-linked technology and media stocks shown in Table XXX
+The Form 13F is a mandatory quarterly report to the Securities and Exchange Commission (SEC) if the assets managed by an institutional investment manager exceed $100 million. Thereby, a institutional investment manager is defined as 1) an entity that either invests in, or buys and sells, securities for its own account or 2) a natural person or an entity that exercises investment discretion over the account of any other natural person or entity. The information which are disclosed are among others the issuer name, the class of security, the numbers of shares owned and the fair market value of the listed securities by the end of the calendar quarter. [@noauthor_secgov_nodate]
+
+The filings are due within 45 days after the end of the quarter, which is for the 4Q 2020, the February 16, 2021, and show the banks’ holdings on the following eight Archegos-linked technology and media stocks shown in Table 1:
 
 |              |
 |--------------|
@@ -155,7 +162,7 @@ The system itself was just an instrument allowing to go leveraged unnoticed, but
 
 If we want to understand what was, we have to understand how the risk is normally assesed and whether the measured were adhered to by Credit Suisse.
 
-Prime-brokerage is still a little opaque and sparsely regulated business and most regulation deals with the brokers and their capital requirements, not assessing the risk of the client (Archegos in this case). However, one document we can refer to is a speech by M.A. Gadziala from the due dilligence department of SEC from 2007 about common risks in the broker-dealer relationship and how to manage them. here insert citaion.
+Prime-brokerage is still a little opaque and sparsely regulated business and most regulation deals with the brokers and their capital requirements, not assessing the risk of the client (Archegos in this case). However, one document we can refer to is a speech by M.A. Gadziala from the due dilligence department of SEC from 2007 about common risks in the broker-dealer relationship and how to manage them. here *insert citaion.*** ** **
 
 Among others, there principles we deem the most important and crucial for understanding the case:
 
@@ -366,10 +373,13 @@ This rate was used to calculate the perpetuity EER, whereas *the discount rate u
 | Price (31.3.2021)   | 9.90   |
 | Undervaluation      | 0.73%  |
 
-According to our valuation, we can see we arrive to intrinsic value that is almost precisely at the price from the end of March, with undervaluation of .73%. Assuming our inputs are correct and assumptions full-filled, we can conclude that the market reaction to the Archegos blowout was appropriate.
+According to our valuation, we can see we arrive to intrinsic value that is almost precisely at the price from the end of March, with undervaluation of .73%. Assuming our inputs are correct and assumptions full-filled, we can conclude that the market reaction to the Archegos blowout was appropriate. 
+
 
 # Section 5
 
 # Conclusion
 
 # References
+
+## References {.allowframebreaks}
