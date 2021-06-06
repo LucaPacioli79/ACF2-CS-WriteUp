@@ -6,6 +6,8 @@ output:
 ---
 ```{r Load Packages, include=FALSE}
 library(bookdown)
+library(citr)
+library(shiny)
 ```
 
 
@@ -21,8 +23,31 @@ library(bookdown)
 ### Subsub..
 
 
-# Section 2
+# The Role of Leverage
 
+## SEC Form 13F
+
+Due to the current state of the regulations and the use of total return swaps, Archegos did not report any of its positions, and therefore, we do not know the exact amount of leverage Archegos had from the different prime brokers. Instead, the analysts from Risk.net computed the estimated losses based on the 13F filings for seven affected prime brokers and compared those to the reported losses to assess the margins. The banks considered for these calculations were Morgan Stanley, Credit Suisse, Goldman Sachs, Nomura, UBS and Deutsche Bank. https://www.risk.net/risk-management/7827796/credit-suisse-held-just-10-margin-against-archegos-book 
+ 
+The Form 13F is a mandatory quarterly report to the Securities and Exchange Commission (SEC) if the assets managed by an institutional investment manager exceed $100 million. Thereby, a institutional investment manager is defined as 1) an entity that either invests in, or buys and sells, securities for its own account or 2) a natural person or an entity that exercises investment discretion over the account of any other natural person or entity. The information which are disclosed are among others the issuer name, the class of security, the numbers of shares owned and the fair market value of the listed securities by the end of the calendar quarter. https://www.sec.gov/divisions/investment/13ffaq.htm The filings are due within 45 days after the end of the quarter, which is for the 4Q 2020, the February 16, 2021, and show the banks’ holdings on the following eight Archegos-linked technology and media stocks shown in Table XXX
+
+|              |
+|--------------|
+| Vipshop      |
+| ViacomCBS    |
+| Tencdnt      |
+| iQYI         |
+| GSX Techedu  |
+| Farfetch     |
+| Discovery    |
+| Baidu        |
+
+## Exposures compared
+
+With the assumptions that the holdings remained constant since the end of the fourth quarter of 2020, namely December 31, the exposure of the banks on these stocks can be estimated for March 22, the day Archegos defaulted. Figure X shows these exposures for the banks side-by-side to their reported losses. And we can see that Morgan Stanley and Credit Suisse had by far the biggest exposure by the end of 2020 with around \$10 to \$12 billion. These two banks alone took half of the share of the total estimated exposure of \$41 billion. They are followed by Goldman Sachs and Nomura (around \$6 billion) while UBS and Deutsche Bank’s exposure was less than $4 billion. We can also see that, relative to their exposure, some banks like Morgan Stanley and Goldman Sachs got away with much lower losses than others (Credit Suisse and Nomura). Note that the losses in the Figure X were set to zero Goldman Sachs and Deutsche Bank which reported “immaterial losses” or were “not expect to incur any loss”. https://www.businesstimes.com.sg/banking-finance/deutsche-bank-avoids-archegos-loss-after-slow-hedge-fund-exit  
+
+
+\pagebreak 
 
 # Causes For The Fiasco
 
