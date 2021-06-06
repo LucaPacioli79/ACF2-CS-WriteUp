@@ -1,0 +1,372 @@
+---
+# This Template was created by Dennis Grobe 
+#
+# If you want to know how to use the beamer_presentation class Rmarkdown, have a look at:
+# https://bookdown.org/yihui/rmarkdown/beamer-presentation.html
+#
+# Guide for the beamer class in LaTeX:
+#
+# http://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf
+#
+# List of Arguments:
+# http://search.r-project.org/library/rmarkdown/html/beamer_presentation.html 
+#
+# Note: There actually is a R function for converting from R Markdown to a Beamer presentation:
+# https://www.rdocumentation.org/packages/rmarkdown/versions/1.9/topics/beamer_presentation
+#
+title: "Set the title in the preamble.tex file"
+author: "Macro Analyst Team"
+date: "June 1, 2021"
+institute: "University of Zurich"
+navigation: horizontal
+bibliography: bib/Slides.bib
+nocite: | 
+  @ruf2020neural, @hodges2017factor, @Amenc2019Macro, @Merton1973AssetP, @Ans2000, @The Journal of Portfolio Management, @Asness2016siren, @FF1992, @FF2015, @Ross1976APT, @Chen2018Sbeta, @White2020Macro, @ChicagoFedNational2021, @CompositeLeadingIndicator, @federalreservebankofchicagoBackgroundChicagoFed2020, @gyomaigyorgyOECDSystemComposite2012
+output: 
+  beamer_presentation:
+    theme: "Madrid"
+    keep_tex: true
+    toc: true
+    slide_level: 2 
+    number_sections: TRUE
+    includes:
+      in_header: preamble.tex
+csl: csl/apa.csl
+lot: true
+lof: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r Load Packages, include=FALSE}
+library(nlme)
+library(fpp)
+library(forecast)
+library(lubridate)
+library(GGally)
+library(chron)
+library(bookdown)
+#library(citr)
+library(styler)
+library(urca)
+```
+
+```{r}
+# Extract R code from the Rmd file:
+# knitr::purl("Slides.Rmd")
+```
+
+# Introduction 
+
+## Asset Pricing Framework
+
+**Value**: Stocks with lower price/book tend to perform better.
+
+**Size**: Companies with lower market cap perform better.
+
+**Dividend yield**: Stocks with high dividend yield and/or high dividend growth tend to perform better.
+
+**Quality**: Stocks with high profitability and/or conservative investment policytend to perform better.
+
+**Momentum**: Stocks that have outperformed the market over the past year tendto perform better.
+
+**Low  volatility**: Stocks  with  low  historical  volatility  and/or  low  market  betatend to perform better
+
+## Validity of the Macroeconomic Signal
+
+```{r, fig.align='center', out.width="70%", fig.cap="Predictive regression of the State variable"}
+knitr::include_graphics("Slides_files/figure-beamer/pred_reg_1.png")
+```
+
+## Data {.allowframebreaks}
+
+### Chicago Fed National Activity Index (CFNAI)
+
+- Monthly data from May 2002 to May 2021
+- The CFNAI is the first principal component on 85 monthly indicators.
+- As a "real-time" statistical measure, it often provides early information about inflationary pressure and turning points in the business cycle.
+
+### CFNAI - Two Sources of Data Revisions
+
+1. The initial publication contains projected values, which are corrected in the subsequent month. 
+
+2. Systematic revision of the underlying indicators throughout the year. 
+
+### OECD Composite Leading Indicator (CLI)
+
+- Monthly data from May 2002 to May 2021
+- Constructed from a range of short-term indicators with fluctuations preceding the fluctuation of the business cycle.
+- Thus, the CLI is a good candidate for the prediction of business cycles.
+
+### CLI - Sources of Data Revisions
+
+- Similar reasons for monthly data revisions as for CFNAI 
+- For the US CLI, there is no evidence of bias caused by revisions. 
+
+## Business cycle signal I
+
+### Economic trend signal - CLI
+We have positive and negative economic trends. We only change between these regimes if there is a change of the CLI greater than its historical standard deviation.
+
+### Recession probability signal - CFNAI
+$\bullet$ High recession probability if CFNAI < -0.25.  
+
+$\bullet$ Low recession probability else.
+
+
+
+## Business Cycle Signal II
+
+Overlaying the economic trend signal and recession probability signal:
+
+$\bullet$ *Expansion* - Low recession probability & positive economic trend.  
+$\bullet$ *Slowdown* - Low recession probability & negative economic trend.  
+$\bullet$ *Contraction* - High recession probability & negative economic trend.  
+$\bullet$ *Recovery* - High recession probability & positive economic trend.  
+
+```{r, fig.align='center', out.width="65%", fig.cap="Illustration taken from Hodges et. al.."}
+knitr::include_graphics("Slides_files/figure-beamer/economicregimes.png")
+```
+
+## Graphical Visualization
+
+```{r, fig.align='center', out.width="65%", fig.cap="Our business cycle signal as leading indicator in relation to the US business cycle."}
+knitr::include_graphics("Slides_files/figure-beamer/bc_against_gdp.png")
+```
+
+# Conditional Performance of Smart Betas
+## Conditional Performance of Smart Betas {.allowframebreaks}
+
+```{r, fig.align='center', out.width="65%", fig.cap="Unconditional and Conditional Annualized Excess Returns of Smart Betas Portfolios"}
+knitr::include_graphics("Slides_files/figure-beamer/Conditional_Returns.png")
+```
+
+
+```{r, fig.align='center', out.width="70%", fig.cap="Unconditional and Conditional Annualized Sharpe Ratios of Smart Betas Portfolios"}
+knitr::include_graphics("Slides_files/figure-beamer/Conditional_sharpes.png")
+```
+
+##  Backtesting - In Sample
+
+```{r, fig.align='center', out.width="70%", fig.cap="In Sample Conditional Annualized Sharpe Ratios of Smart Betas Portfolios from Dec 2002 to Nov 2011"}
+knitr::include_graphics("Slides_files/figure-beamer/Conditional_sharpes_IS.png")
+```
+
+
+
+##  Backtesting - Out Of Sample {.allowframebreaks}
+
+### Introduction
+- long only
+- long cap of 1
+- results expressed in excess returns
+- accounted for ETF fees and trading costs of 10bps as in the lecture
+- period from Dec 2011 to Apr 2021
+- benchmark is EW of all factor ETFs
+
+### 1st strategy - Best Sharpe 
+long on the Factor ETF that has the best sharpe ratio conditional to the business cycle regime based on in sample results (i.e. in the recovery regime we load 1 on the min vol ETF).
+
+### 2nd strategy - Two Best Sharpes
+
+long equally weighted on the two Factor ETFs that have the best sharpe ratios conditional to the business cycle regime to achieve diversification effect (i.e. in the recovery regime we load 0.5 on the min vol ETF and 0.5 on the quality ETF).
+
+## 
+
+```{r, fig.align='center', out.width="70%", fig.cap="In Sample Conditional Annualized Sharpe Ratios of Smart Betas Portfolios Dec 2002 to Nov 2011"}
+knitr::include_graphics("Slides_files/figure-beamer/Conditional_sharpes_IS.png")
+```
+
+##  Backtesting - Out Of Sample {.allowframebreaks}
+
+### 3rd strategy - 1st Scaled on VIX
+scaling the weight of the 1st strategy with the VIX using a rolling window of three months, while using a long-cap of 1
+
+\begin{equation}
+W_{i} = W^{strategy1}_i \frac{\text{mean(VIX 3 months)}}{VIX_{i-1}}
+\end{equation}
+
+### 4th strategy - Relative Sharpe
+long on all the ETFs with the following weight allocation:
+    \begin{equation}
+      W_{k} =  \frac{Sharpe_{k}}{ \sum_{k=1}^K Sharpe_{k}};\ k,...,K = 5
+    \end{equation} 
+    
+##  Backtest Results - Plots  {.allowframebreaks}
+\begin{columns}
+
+\begin{column}{0.43\textwidth}
+```{r, fig.align='center', out.width="100%", fig.cap="Out Of Sample ”Best Sharpe” Strategy Returns"}
+knitr::include_graphics("Slides_files/figure-beamer/strategy 1.png")
+```
+\end{column}
+
+\begin{column}{0.43\textwidth}
+```{r, fig.align='center', out.width="100%", fig.cap="Out Of Sample ”2 Best Sharpes” Strategy Returns"}
+knitr::include_graphics("Slides_files/figure-beamer/strategy 2.png")
+```
+\end{column}
+
+\end{columns}
+
+\begin{columns}
+
+\begin{column}{0.43\textwidth}
+```{r, fig.align='center', out.width="100%", fig.cap=" Out Of Sample ”VIX Timing on Best Sharpe” Strategy Returns"}
+knitr::include_graphics("Slides_files/figure-beamer/strategy 3.png")
+```
+\end{column}
+
+\begin{column}{0.43\textwidth}
+```{r, fig.align='center', out.width="100%", fig.cap="Out Of Sample ”Scaled on Relative Sharpe” Strategy Returns"}
+knitr::include_graphics("Slides_files/figure-beamer/strategy 4.png")
+```
+\end{column}
+
+\end{columns}
+
+```{r, fig.align='center', out.width="70%", fig.cap="Out Of Sample All Strategies Returns"}
+knitr::include_graphics("Slides_files/figure-beamer/all strategies.png")
+```    
+    
+## Summary statistics
+
+```{r, fig.align='center', out.width="100%", fig.cap=" Summary Statistics of Our Strategies and Benchmark"}
+knitr::include_graphics("Slides_files/figure-beamer/sumStats.png")
+```
+    
+
+
+# Model Extension: A Neural Network Approach
+
+## Idea
+We have seen: Timing strategies based on our business cycle indicator.
+
+\medskip
+
+### Question: 
+Can supervised learning with neural networks as model and the given macroeconomic data (CLI & CFNAI) create a sensible strategy by making allocation decisions each month?
+
+## Architecture I
+
+```{r, fig.align='center', out.width="85%", fig.cap="Neural network architecture for 1-month trading on past macro-economic data."}
+knitr::include_graphics("Slides_files/figure-beamer/architecture_1.png")
+```
+
+## Optimization Problem I
+
+Return optimization (one-month):
+
+\begin{equation}
+\small{
+    \max_{\theta} NN_{\theta}(Data_{CLI,CFNAI})_{rx}
+}
+\end{equation}
+
+Adjusted formulation to incorporate diversification:
+
+\begin{equation}
+\small{
+\label{eq_loss_div_1}
+    \max_{\theta} \{NN_{\theta}(Data_{CLI,CFNAI})_{rx} - \lambda||NN_{\theta}(Data_{CLI,CFNAI})_{strategy}||_2^2\}
+}
+\end{equation}
+
+
+## Architecture II
+
+```{r, fig.align='center', out.width="85%", fig.cap="Neural  network  architecture  for N-month  trading  on  past  macro-economic data."}
+knitr::include_graphics("Slides_files/figure-beamer/architecture_2.png")
+```
+
+## Optimization Problem II
+
+Sharpe optimization (multi-month):
+\begin{equation}
+\small{
+\label{eq_loss_div_2}
+    \min_{\theta} \{\exp(- NN_{\theta}(Data_{CLI,CFNAI})_{sharpe}) + \exp(\lambda ||NN_{\theta}(Data_{CLI,CFNAI})_{strategy}||_2^2)\}
+}
+\end{equation}
+
+## Data Handling
+
+$\bullet$ Normalized first differences of CLI.  
+
+$\bullet$ Normalized CFNAI.
+
+## Parameters of the Neural Network
+
+\begin{columns}
+\begin{column}{0.43\textwidth}
+
+$\bullet$ Hidden layers: 40 dense layers with width 90 in allocation network in both models.
+
+$\bullet$ Allocation decisions dependent on macro-economic data over the past 25 months.
+
+
+\end{column}
+
+
+\begin{column}{0.43\textwidth}
+```{r, fig.align='center', out.width="85%", fig.cap="Graphical illustration of the training and allocation scheme of the second model."}
+knitr::include_graphics("Slides_files/figure-beamer/training_scheme_2.png")
+```
+\end{column}
+\end{columns}
+
+
+## Performance {.allowframebreaks}
+
+```{r, fig.align='center', out.width="100%", fig.cap="Allocation scheme in ETFs and cash of our first model (return maximization)."}
+knitr::include_graphics("Slides_files/figure-beamer/ew_allocation_1.png")
+```
+
+```{r, fig.align='center', out.width="100%", fig.cap="Allocation scheme in ETFs of our second model (sharpe maximization)."}
+knitr::include_graphics("Slides_files/figure-beamer/ew_allocation_2.png")
+```
+ 
+```{r, fig.align='center', out.width="100%", fig.cap="Plot of the first model’s performance (return maximization) against the EW benchmark."}
+knitr::include_graphics("Slides_files/figure-beamer/ew_perf_bench_1.png")
+```   
+  
+```{r, fig.align='center', out.width="100%", fig.cap="Plot of the second model’s performance (sharpe maximization) against the EW benchmark."}
+knitr::include_graphics("Slides_files/figure-beamer/ew_perf_bench_2.png")
+```       
+
+```{r, fig.align='center', out.width="80%", fig.cap="Summary  statistic  for  model  1  (return  maximization)  and  model 2 (sharpe maximization)."}
+knitr::include_graphics("Slides_files/figure-beamer/nn_summaries.png")
+```
+
+## Possible Modifications
+
+### Asset universe
+Extension / change of the current MSCI US smart beta asset universe. 
+
+### Data input
+Allow more macro-economic/financial data to be used by the neural network for the determination of its allocation scheme.
+
+### Architecture
+Develop and implement an architecture based upon the provided data and its optimization formulation. 
+
+# Appendix
+
+## Risk Factors Loading and Alpha
+
+```{r, fig.align='center', out.width="50%", fig.cap="Regression Results"}
+knitr::include_graphics("Slides_files/figure-beamer/reg_table.png")
+```
+
+
+# References
+
+## References {.allowframebreaks}
+
+
+
+
+
+
+
