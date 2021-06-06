@@ -31,6 +31,12 @@ In the previous parts we discussed how overleveraged and risky the positions was
 
 ## CS400
 
+Firstly, let us discuss and present CS400. CS400 is a system developed by Credit Suisse themselves together with Palantyr Systems in 2006 and it allows hedge fund to switch and **add positions with several prime brokers** at will, quickly and without them noticing it. Such system is therefore the reason, why lenders did not know among themselves that Archegos was doing the same trades not only with them, but also with the other banks.
+
+How can we infer Archegos was using the system? The number 400 refers to the list of first 400 "exclusive" hedge funds CS was working with, serving as a marketing strategy , making other hedge funds want to join. 
+
+Tiger Asia, i.e. the predecessor of Archegos managed by Hwang was on that list.**citation**One could say that CS succesful project CS400 ultimately contributed to the meltdown.
+
 
 
 ## Failures of the risk mananagement
@@ -66,13 +72,37 @@ Be it because of its size or inflexibility, according to Risk.net and a certain 
 
 Strong overall compliance means that not only people directly responsible are ought to take risk-management approaches. We would expect that senior executives would be leading this front, however, contrary was true at Credit Suisse.
 
-According to swissinfo.ch, senior executives were "too eager to chase lucrative deals, overruling risk-management warnings".
+According to swissinfo.ch, senior executives were "too eager to chase lucrative deals, overruling risk-management warnings". Except for being an obvious violation of the risk management principle, it paints a very gloomy picture about the incentives of some people at the bank and how they manage investments. One can dispose of the most advanced modelling tool, but if the warnings are ignored and overruled, it renders any risk management useless.
+
 ### Effective reconciliation process to ensure data integrity and completeness
 
+It is obvious one needs data and positions in order to even conduct any risk modelling. The data of course has to be correct and complete, otherwise the results would be skewed. 
+
+At Credit Suisse, this was the biggest violation of all, in our opinion. “It’s clear that a family office like that did not disclose positions like a normal hedge fund would do.” said Thomas Gottstein, CEO of Credit Suisse after the Archegos meltdown.
+
+What does this statement tell us? Ultimately, except for being a violation of the above-mentioned principle, it raises a myriad of subsequent problems. Mainly, if Credit Suisse did not receive any data or positions report from Archegos, *how did Credit Suisse conduct risk modelling?*
+
+Our speculation is that it simply did not and was complacent about only controlling the position it held with Archegos itself in the TRS positions, unaware that by using their proprietary system CS400, Archegos amased leveraged on the exact same positions with other lenders as well. # JACOPO PART ABOUT OVERVALUING THE COLLATERAL?
+
+Lastly, it raises the question how the 10% margin requirement was determined, if there was little/no data to decide upon; our speculation is again that it might have been an arbitrary decision, which would explain why Credit Suisse required the lowest margin among lenders.
+
+## Why did nobody notice?
+
+Now that we have discussed what failures there might have been in the risk management department, it leads us to ask another questions: Why did nobody notice? After all, Credit Suisse is a world-class bank and prides itself in hiring and having the top banking talent. For this reason, it is not obvious why so many lines of defense were breached. We believe the reasons for overlooking the position are three fold:
+
+1. Firstly, recall how we discussed that senior executives were too eager to chase lucrative deals, **overrulling the risk management warnings**. That indicates the people actually noticed, but were simply sileneced for the sake of risky profit.  This leads us to our second pooint:
+2. Senior management uninvolvement. We have discussed this issue and again, it is sort of a self-recurring, vicious cycle type of problem. If the warnings were overruled, the senior management was in the blue, unknowing about the positions. But last point not many are discussing or writing about is our last point.
+3. Mr. Parshu Shah. He was the head of prime-brokerage risk management, hence directly overseeing funds such Archegos, included. The problem of him being in this position was that he **worked as a salesman for that exact same Archegos**. That to us is a massive conflict of interests. It is important to state that despite losing the job, Mr. Shah has not been accused of any misconduct or fraud and were are certainly not doing that either. Our speculation is that because of human biases, Mr. Shah might have had a somewhat close relationship with people from Archegos, not applying such scrutiny and diligence he should have, being maybe too jovial or chummy, ultimately leading to Archegos not being required or subject to deeper diligence. Of course, it the contrary could have been true, i.e. Mr. Shah was a "thief turn policeman"^[we are not implying being an Archegos salesman means being a thief and the statement serves only as a metaphor]. However, one cannot give too much leeway in this very questionable and significant event and has to certainly explore to possibility we presented above.
+
+This claim could be further supported by the facts *citation here* that when Archegos called up the lenders meeting, not being able to answer the margin calls, Credit Suisse argued for a "take it slow appraoch" in order to protect Archegos. So while the other banks were rushing for the exit, selling at their first opportunity, Credit Suisse waited for a week, eventually having to sell the stock it held for a rather unfavourable price.
+
+One could argue that because of its exposure, Credit Suisse wanted to take a pragmatic approach to cool down the situation, without any regard for Archegos. However, other lenders such as JP Morgan, Morgan Stanley or Goldman Sachs have reputation of extremely relentless, opportunistic players and we think Credit Suisse must have known this. We therefore lean to the argument that there truly was something special in the relationship with Archegos.
 
 
 
 
+
+\pagebreak
 
 # Valuation - Did The Market Overreact?
 
