@@ -1,13 +1,9 @@
 ---
 title: 
 output:
-  pdf_document:
-toc: true
+  pdf_document: 
+toc: yes
 bibliography: references.bib
-
-       
-      
-
 ---
 
 ```{r Load Packages, include=FALSE}
@@ -19,31 +15,42 @@ library(shiny)
 
 \pagebreak
 
-# Introduction
+# Abstract
 
 
-In this paper we will discuss how Archegos Capital, the family office owned by Bill Hwang, defaulted on margin calls with more than \$30 Billion exposure and how it affected Credit Suisse, who was the last bank to exit the relationship with the family office. We portray the relationship of Archegos Capital with Credit Suisse, and show how by using TRS the family office built undetectable massive and leveraged positions on a few companies.  
+In this paper we will discuss how Archegos Capital, the family office owned by Bill Hwang, defaulted on margin calls with more than $30 Billion exposure and how it affected Credit Suisse, who was the last bank to exit the relationship with the family office. We portray the relationship of Archegos Capital with Credit Suisse, and show how by using TRS the family office built undetectable, massive and leveraged positions on a few companies. 
 
 We investigate how top officers at Credit Suisse were lured by fees and viewed the deal that was presented by Bill Hwang as low risk as presented to its clients, and show how the bank had not instituted the proper mathematical models to handle the intricate nature of the TRS, and how the opaque and lacking reporting done by Archegos Capital - who evaded supervision by using the TRS and by being a family office - led Credit Suisse to form a blurred picture of its exposure to Archegos. 
 
-Moreover, Credit Suisse exacerbated its losses by maintaining a friendly stance toward the family office, being the last to exit the positions whereas other banks were left with smaller losses even though they had similar exposure to Archegos. To conclude this paper, we provide a valuation of Credit Suisse and how the Archegos Capital crisis will impact the bank’s value, and add some suggestions as to what practices could Credit Suisse implement to avoid such fallouts in the future.  
+Moreover, Credit Suisse exacerbated its losses by maintaining a friendly stance toward the family office, being the last to exit the positions whereas some other banks were left with smaller losses even though they had similar exposure to Archegos. To conclude this paper, we provide a valuation of Credit Suisse and how the Archegos Capital crisis will impact the bank’s value, and add some suggestions as to what practices could Credit Suisse implement to avoid such fallouts in the future. 
+
+# Introduction
+
+It was some two months into the year 2021 after the difficult year 2020 impacted by COVID-19. Credit Suisse was already battling the Greensil bank scandal, but other than that, it was business as usual. That is, until the Tuesday, 6th of March, when Credit Suisse announced it would take roughly 4.5 billion (and counting) Swiss francs loss from the exposure to an exploded “hedge fund” Archegos Capital Management, effectively wiping out whole year’s profits. 
+
+Bill Hwang is a former protégé of a well-known hedge fund manager Mr. Robertson, who ran Tiger Management, a hedge fund focused on Asia. Mr. Hwang then ran an offshoot of Tiger Management, the so-called Tiger Asia, which then transitioned to a family office, Archegos Capital Management, a name referring to biblical teaching. 
+
+It is important to stress that Archegos Capital Management was not a hedge fund, but rather a family office, which does not trade capital of outside investors but only its own family wealth. In the case of Mr. Hwang, he managed around $10B of his own money, while using a substantial leverage, which we will discuss later in the case. Though Archegos Mr. Hwang signed contracts with the world’s top investment banks which, in exchange of fat fees, were willing to act as prime brokers for Archegos. By engaging contemporaneously with different prime brokers, Archegos managed to accumulate large positions in limited number of stocks. 
+
+To Achieve this result, Mr. Hwang used a special derivative instrument called Total Return Swaps (TRS) which allowed him to accumulate levered positions without actually owning the assets. Before describing how the TRS work, we will analyse the equities that were being traded by the banks on the behalf of Archegos. This will bring further evidence of the highly speculative nature of Archegos’ positions which in turn should have caused banks to realize that something was not right with this very client.
 
 # Analysis of Archegos' Positions
 
-We hypothesize that Mr. Hwang's trades were purely speculative and his objective from the beginning was to accumulate large positions in these specific stocks solely to drive price higher. To bring evidence in favor of our hypothesis we will analyze the specific stocks in which Archegos accumulated positions through the banks. 
+We hypothesize that Mr. Hwang’s trades were purely speculative and his objective from the beginning was to accumulate large positions in these specific stocks solely to drive prices higher. To bring evidence in favor of our hypothesis we will analyze the specific stocks in which Archegos accumulated positions through the banks. 
 
-The stocks are Viacom (VIAC), Tencent (TECHY), Baidu(BIDU),vipshop.com (VIPS), Discovery(DISCA), Farfetch (FTCH), GSX Techedu (GOTU), and IQYi(IQ).  5 out of 8 are Chinese Based companies and all of them operate in the IT Industry. We believe that the tilt towards the Chinese market and the chosen industry were not mere occurrences. Mr. Whang was indeed very familiar with the Chinese market as the name of his original Hedge fund, Tiger Asia, suggests. In this regard, both the insider trading prosecution in 2012 and the exclusion from the Hong stock exchange in 2014 were linked to illicit trading activity with Chinese stocks. Mr. Whang was not only very knowledgeable of the Chinese market, but he also knew that Chinese stocks are often not getting as much attention, from the analysts, as their American counterparties. Regarding the industry choice, Mr.  Whang exploited the fact that tech stocks can often trade at high multiples without raising too many questions about their pricing. We believe that these facts, together with the lack of transparency common to Chinese firms, were exploited by Mr. Whang to remain unnoticed while he was driving the prices up through his sizable positions.  
+The stocks are Viacom (VIAC), Tencent (TECHY), Baidu (BIDU), Vipshop (VIPS), Discovery (DISCA), Farfetch (FTCH), GSX Techedu (GOTU), and iQYI (IQ). 5 out of 8 are Chinese-based companies and all of them operate in the IT Industry. We believe that the tilt towards the Chinese market and the chosen industry were not mere coincidence. Mr. Hwang was indeed very familiar with the Chinese market as the name of his original Hedge fund, Tiger Asia, suggests. In this regard, both the insider trading prosecution in 2012 and the exclusion from the Hong stock exchange in 2014 were linked to illicit trading activity with Chinese stocks. Mr. Hwang was not only very knowledgeable of the Chinese market but he also knew that Chinese stocks are often not getting as much attention from the analysts, as their American counterparties. Regarding the industry choice, Mr. Hwang exploited the fact that tech stocks can often trade at high multiples without raising too many questions about their pricing. We believe that these facts, together with the lack of transparency common to Chinese firms, were exploited by Mr. Hwang to remain unnoticed while he was driving the prices up through his sizable positions. 
 
-In Figure 1. we report the stock prices of some of these companies between June 2020 and July 2021.^[Source: Bloomberg]
+
 
 ![Price chart of top holdings of Archegos](pics/Stock_prices.png)
 
-From the graph, a clear uptrend in most of the positions can be detected. On January 28 a small spike in the price of Viacom can be observed. This spike was the result of a downgrade of the stock by the Credit Suisse research department. Although we are knowledgeable of the internal firewalls in place within CS, it seems to us quite striking that the Investment banking department did not know of the downgrade of a stock that, at the end of the day, the bank was holding. As prices kept rising the downgrades of Archegos linked stocks were piling up as analysts were figuring out that no fundamental changes were to justify such high prices. On March 28 Viacom managers figure out that they could take advantage of the inflated share price, up 800% in a year, and decided to place a secondary offering to cash in. On the announcement, the share price dropped more than 27% and the prime brokers started issuing margin calls for Archegos. As Mr. Whang however had no intention of posting additional margin, he decided to simply default on the margin calls leaving all the banks stocked with their balance sheets full of the same Archegos positions. It is not very clear when the default happened and how it was communicated to the banks, what is clear though is that some banks started to sell huge blocks of stocks before the others did. As block trades were flooding the market the prices collapsed and the banks who didn’t sell, like Credit Suisse and Nomura, were now forced to liquidate at the market bottom.  
-To further strengthen our hypothesis that prices were driven up by Mr. Whang's trading activities and not because of changes in fundamentals we report a time series of the P/Es in Table 1. 
+In Figure 1. we report the stock prices of some of these companies between June 2020 and July 2021.^[Source: Bloomberg] From the graph, a clear uptrend in most of the positions can be detected. On January 28, a small spike in the price of Viacom can be observed. This spike was the result of a downgrade of the stock by Credit Suisse’s research department. Although we are aware of the internal firewalls in place within CS, it seems quite striking to us that the investment banking department did not know of the downgrade of a stock which the bank was holding. As prices kept rising, the downgrades of Archegos linked stocks were piling up as analysts were figuring out that no fundamental changes were to justify such high prices. On March 28, Viacom managers figured out that they could take advantage of the inflated share price, up 800% in a year, and decided to place a secondary offering to cash in. On the announcement, the share price dropped by more than 27% and the prime brokers started issuing margin calls to Archegos. As Mr.Hwang however had no intention of posting additional margin, he decided to simply default on the margin calls, leaving all the banks stocked with their balance sheets full of the same Archegos positions. It is not very clear how the default was communicated to the banks. What is clear though, is that some banks started to sell huge blocks of stocks before others. As block trades were flooding the market, the prices collapsed and the banks who did not sell, like Credit Suisse and Nomura, were forced to liquidate at the market bottom. 
 
-In case changes in fundaments were to do drive the increase in stock prices we would expect relatively stable 12 months forward P/Es. In t table (x) we observe that only for a few companies the P/Es remained stable (Tencent and Baidu)  while for the majority the P/Es more than doubled in only a few months. Furthermore, we notice that in April, after Archogos default, all the multiples are now smaller compared to January. Despite this last result is likely to be the result of an overreaction by the market, we believe that the trend in the multiples confirms our initial hypothesis. 
+To further strengthen our hypothesis that prices were driven up by Mr. Hwang’s trading activities and not because of changes in fundamentals we report a time series of the P/Es in Table 1. 
 
- Finally, Mr. Whang used his knowledge of the Chinese market and the market appetite for tech unicorns to manipulate the prices of only a few stocks. To achieve all this Mr. Whang used a special financial derivative offered by investment banks which is considered to be one of the catalysts of the fiasco.  
+In the case changes in fundamentals were to drive the increase in stock prices, we would expect relatively stable 12 months forward P/Es. In Table 1, we observe that only for a few companies the P/Es remained stable (Tencent and Baidu) while for the majority the P/Es more than doubled in only a few months. Furthermore, we notice that in April, after Archegos default, all the multiples are now smaller compared to January. Despite this was likely to be the result of an overreaction by the market, we believe that the trend in the multiples confirms our initial hypothesis. 
+
+Finally, Mr. Hwang used his knowledge of the Chinese market and the market appetite for tech unicorns to manipulate the prices of only a few stocks. To achieve all this, Mr. Hwang used a special financial derivative offered by investment banks which is considered to be one of the catalysts of the fiasco. 
  
 *Table 1: P/E Ratios of the top holdings of Archegos*
 
@@ -60,68 +67,72 @@ In case changes in fundaments were to do drive the increase in stock prices we w
 
 ## General mechanics
 
-The Total Return Swap (TRS) is a special kind of derivative contract thanks to which two counterparties exchange the total return of an asset - or of a number of assets - for a guarantee against any capital losses and a fee. The fee is a periodic cash flow which is composed of a variable rate (e.g. LIBOR) and a fixed spread. The party which holds the underlying asset and that pays the total return of it, is known as the TRS payer while the party receiving the total return and paying out the fees is called TRS receiver. 
+The Total Return Swap (TRS) is a special kind of derivative contract thanks to which two counterparties exchange the total return of an asset - or of a number of assets - for a guarantee against any capital losses and a fee. The fee is a periodic cash flow which is composed of a variable rate (e.g. LIBOR) and a fixed spread. The party which holds the underlying asset and pays its total return, is known as the TRS payer while the party receiving the total return and paying out the fees is called TRS receiver. 
 
-![Model example of a TRS contract](pics/TRS_example.png)
 
-The margin and the fixed spread required by the TRS payer are strictly linked. As a rule of thumb, the lower the margin required by the TRS payer, the higher the leverage of the TRS receiver, the higher the counterparty risk bared by the TRS payer, the higher will be the fixed spread required on top of the variable rate by the TRS payer. 
-As a consequence, this instrument is constructed in such a way that at inception the Net Present Value (NPV) of the transaction equals zero. 
+The margin and the fixed spread required by the TRS payer are strictly linked. As a rule of thumb, the lower the margin required by the TRS payer, the higher the leverage of the TRS receiver, the higher the counterparty risk borne by the TRS payer, the higher will be the fixed spread required on top of the variable rate by the TRS payer. As a consequence, this instrument is constructed in such a way that at inception, the Net Present Value (NPV) of the transaction equals zero. 
 
-The TRS holds benefits and disadvantages for both parties on different scales.  
-On the one side of the transaction, engaging into a TRS, a total return receiver, can reap off the benefits of anonymity because it has exposure to the underlying asset without actually holding it in first person. Since the receiver of the swap does not hold the asset, it is not obliged to disclose the position because materially he is not the holder; the total return payer is. Moreover, entering a TRS, the receiver of the total return can obtain very high amounts of leverage depending on the margin required by the payer.  
-The main disadvantage for total return receiver is that it bears the whole investment return risk of the underlying transaction. As it was pointed out earlier, the receiver must be ready to back-up a depreciation in the underlying asset at any point in time.
+The TRS holds benefits and disadvantages for both parties on different scales. On one side of the transaction, engaging into a TRS, a total return receiver, can reap off the benefits of anonymity because it has exposure to the underlying asset without actually holding it in first person.Since the receiver of the swap does not hold the asset, it is not obliged to disclose the position because materially he is not the holder; the total return payer is. Moreover, entering a TRS, the receiver of the total return can obtain very high amounts of leverage depending on the margin required by the payer. The main disadvantage for a total return receiver is that it bears the whole investment return risk of the underlying transaction. As it was pointed out earlier, the receiver must be ready to back-up a depreciation in the underlying asset at any point in time. 
  
-On the other side of the transaction, trading a TRS, a total return payer, can transform a risky bet on a stock into a risk-less profit at the cost of holding the underlying asset directly and writing it on its balance sheet. ​  
-The disadvantage for the swap payer is the default risk of the receiver. The entities engaging into a TRS as receivers are usually hedge funds which are known to accumulate a lot of leverage on these positions and to concentrate this leverage on rather similar assets. This is a rather dangerous practice because in case of a strong market downtrend a total return receiver could default on the TRS if it is not adequality capitalized (i.e. not able to back-up the capital depreciation of the underlying asset). If the default materializes, the risk for the total return payer is to remain stuck with the underlying asset and with the capital loss deriving from it. At this point the choices that the swap payer is left with are just a few which depend on the specific situation and market conditions: liquidating the underlying little by little in the market, liquidating the underlying in block trades or continuing to hold it.  
+On the other side of the transaction, trading a TRS, a total return payer can transform a risky bet on a stock into a fixed payment at the cost of holding the underlying asset directly and writing it on its balance sheet. ​The disadvantage for the swap payer is the default risk of the receiver. The entities engaging into a TRS as receivers are usually hedge funds which are known to accumulate a lot of leverage on these positions and to concentrate this leverage on rather similar assets. This is a rather dangerous practice because in case of a strong market downtrend, a total return receiver could default on the TRS if it is not adequately capitalized (i.e. not able to back-up the capital depreciation of the underlying asset). If the default materializes, the risk for the total return payer remains stuck with the underlying asset and the capital loss deriving from it. At this point, the choices that the swap payer is left with are just a few which depend on the specific situation and market conditions: (1) liquidating the underlying little by little in the market, (2) liquidating the underlying in block trades or (3) continuing to hold it. 
  
-In order to bring the TRS in the context of our case study, let’s now examine a straightforward fictitious example of what such a transaction involves and what could be the different outcomes depending on the materialized future market scenario.  
-Suppose Credit Suisse and Archegos, namely the payer and the receiver of the swap, underwrite a TRS with maturity one year on a fictitious underlying asset (pool of Chinese tech stocks) for a principal amount of 10 million USD with a margin of 10%. Trading this swap, Archegos gets 10 times leverage exposure to the underlying asset without holding it directly and in exchange for this it pays Credit Suisse a fee composed of a variable rate (LIBOR) plus a fixed spread of 2%. 
+In order to bring the TRS in the context of our case study, let’s now examine a straightforward fictitious example what such a transaction involves and what could be the different outcomes depending on the materialized future market scenario. Suppose Credit Suisse and Archegos, namely the payer and the receiver of the swap, underwrite a TRS with maturity one year on a fictitious underlying asset (pool of Chinese tech stocks) for a principal amount of 10 million USD with a margin of 10%. Trading this swap, Archegos gets a ten times leverage exposure to the underlying asset without holding it directly and in exchange pays Credit Suisse a fee composed of a variable rate (LIBOR) plus a fixed spread of 2%. 
 
 ## Scenario 1: win-win
 
 
-![Scenario 1: Win-win situation](pics/scenario1.png) 
 
-LIBOR = 1% and underlying asset appreciated by 6%
-Net Profit for Credit Suisse = (1% + 2%) 10MM = 300,000 USD 
-Net Profit for Archegos = [6% - (1% + 2%)] 10MM = 300,000 USD 
+
+LIBOR = 1% and underlying asset appreciated by 6% \
+
+Net Profit for Credit Suisse = (1% + 2%) 10MM = 300,000 USD \
+
+Net Profit for Archegos = [6% - (1% + 2%)] 10MM = 300,000 USD \
  
 In scenario 1, the underlying asset appreciated and the resulting transaction yields a win – win type scenario in which both the payer and the receiver of the swap profit. 
 
 ## Scenario 2: lose-win
 
-LIBOR = 1% and underlying asset appreciated by 1%
+LIBOR = 1% and underlying asset appreciated by 1% \
 
-Net Profit for Credit Suisse = (1% + 2%) 10MM = 300,000 USD 
-Net Profit for Archegos = [1% - (1% + 2%)] 10MM = -200,000 USD 
+Net Profit for Credit Suisse = (1% + 2%) 10MM = 300,000 USD \
+
+Net Profit for Archegos = [1% - (1% + 2%)] 10MM = -200,000 USD \
  
-In scenario 2, the underlying asset appreciated only slightly and the resulting transaction yields a lose – win type scenario in which the payer of the swap profits from the fees received and the receiver loses because the capital appreciation of the asset is lower than the amount of fees that it has to pay. In this scenario we assume that Archegos is liquid enough and is able to pay the fees to Credit Suisse (we rule out counterparty default risk). 
+In scenario 2, the underlying asset appreciated only slightly and the resulting transaction yields a lose – win type scenario in which the payer of the swap profits from the fees received and the receiver loses because the capital appreciation of the asset is lower than the amount of fees that it has to pay. In this scenario, we assume that Archegos is liquid enough and is able to pay the fees to Credit Suisse (we rule out counterparty default risk). 
 
-![Scenario 1: Lose-win situation](pics/scenario2.png) 
+
+\pagebreak
 
 ## Scenario 3: lose-lose situation
 
-LIBOR = 1% and underlying asset depreciated by 20%
+LIBOR = 1% and underlying asset depreciated by 20% \
 
-Pending Loss for Archegos = [20% + (1% + 2%)] 10MM = 2,300,000 USD 
+Pending Loss for Archegos = [20% + (1% + 2%)] 10MM = 2,300,000 USD \
  
 We assume that Archegos defaults on the TRS because it is not able to back-up the depreciation of the underlying asset due to high leverage and liquidity constraints. 
- 
-In scenario 3, the underlying asset suffered a steep decline in price due to adverse market conditions and the resulting transaction yields a lose – lose type scenario in which the payer of the swap cannot recover the capital depreciation and the fees by the receiver of the swap due to its default. Now Credit Suisse is stuck with the underlying pool of risky assets which keeps depreciating in the market due to the fire sale of other institutions and investors.  
 
+In scenario 3, the underlying asset suffered a steep decline in price due to adverse market conditions and the resulting transaction yields a lose – lose type scenario in which the payer of the swap cannot recover the capital depreciation and the fees by the receiver of the swap due to its default. Now Credit Suisse is stuck with the underlying pool of risky assets which keeps depreciating in the market due to the fire sale of other institutions and investors.  institutions and investors.  
 
+![Model example of a TRS contract](pics/TRS_example.png)
+
+![Scenario 1: Win-win situation](pics/scenario1.png) 
+
+![Scenario 1: Lose-win situation](pics/scenario2.png) 
 
 ![Scenario 3: lose-lose situation](pics/scenario3.png) 
+
+\pagebreak
 
 # The Role of Leverage
 
 ## SEC Form 13F
 
-Due to the current state of the regulations and the use of total return swaps, Archegos did not report any of its positions, and therefore, we do not know the exact amount of leverage Archegos had from the different prime brokers. Instead, the analysts from Risk.net computed the estimated losses based on the 13F filings for seven affected prime brokers and compared those to the reported losses to assess the margins. The banks considered for these calculations were Morgan Stanley, Credit Suisse, Goldman Sachs, Nomura, UBS and Deutsche Bank. ^[[@noauthor_credit_2021]]
+Due to the current state of the regulations and the use of total return swaps, Archegos did not report any of its positions, and therefore, we do not know the exact amount of leverage Archegos indirectly held through the different prime brokers. Instead, the analysts from Risk.net computed the estimated losses based on the 13F filings for six affected prime brokers and compared those to the reported losses to assess the margins. The banks considered for these calculations were Morgan Stanley, Credit Suisse, Goldman Sachs, Nomura, UBS and Deutsche Bank. ^[[@noauthor_credit_2021]]
 
-The Form 13F is a mandatory quarterly report to the Securities and Exchange Commission (SEC) if the assets managed by an institutional investment manager exceed $100 million. Thereby, a institutional investment manager is defined as 1) an entity that either invests in, or buys and sells, securities for its own account or 2) a natural person or an entity that exercises investment discretion over the account of any other natural person or entity. The information which are disclosed are among others the issuer name, the class of security, the numbers of shares owned and the fair market value of the listed securities by the end of the calendar quarter. ^[[@noauthor_secgov_nodate]]
+The Form 13F is a mandatory quarterly report to the Securities and Exchange Commission (SEC) if the assets managed by an institutional investment manager exceed $100 million. Thereby, an institutional investment manager is defined as 1) an entity that either invests in, or buys and sells, securities for its own account or 2) a natural person or an entity that exercises investment discretion over the account of any other natural person or entity. The information which are disclosed are among others: the issuer name, the class of security, the numbers of shares owned and the fair market value of the listed securities by the end of the respective the calendar quarter. ^[[@noauthor_secgov_nodate]]
 
-The filings are due within 45 days after the end of the quarter, which is for the 4Q 2020, the February 16, 2021, and show the banks’ holdings on the following eight Archegos-linked technology and media stocks shown in Table 2:
+The filings are due within 45 days after the end of the quarter, which is for the 4Q 2020, the February 16, 2021, and show the banks’ holdings on the following eight Archegos-linked technology and media stocks shown in Table 2: 
 
 *Table 2: Holdings of Archegos Capital Management*
 
@@ -134,7 +145,7 @@ The filings are due within 45 days after the end of the quarter, which is for th
 
 ## Exposures compared
 
-With the assumptions that the holdings remained constant since the end of the fourth quarter of 2020, namely December 31, the exposure of the banks on these stocks can be estimated for March 22, the day Archegos defaulted. Figure X shows these exposures for the banks side-by-side to their reported losses. And we can see that Morgan Stanley and Credit Suisse had by far the biggest exposure by the end of 2020 with around \$10 to \$12 billion. These two banks alone took half of the share of the total estimated exposure of \$41 billion. They are followed by Goldman Sachs and Nomura (around \$6 billion) while UBS and Deutsche Bank’s exposure was less than $4 billion. We can also see that, relative to their exposure, some banks like Morgan Stanley and Goldman Sachs got away with much lower losses than others (Credit Suisse and Nomura). Note that the losses in the Figure X were set to zero Goldman Sachs and Deutsche Bank which reported “immaterial losses” or were “not expect to incur any loss”. ^[[@noauthor_deutsche_nodate]]
+With the assumption that the holdings remained constant since the end of the fourth quarter of 2020, namely December 31, the exposure of the banks on these stocks can be estimated for March 26, the day Archegos defaulted. Figure 6 shows these exposures for the banks side-by-side to their reported losses. We can see that Morgan Stanley and Credit Suisse had by far the biggest exposure by the end of 2020 with around \$10 to \$12 billion. These two banks alone took half of the share of the total estimated exposure of \$41 billion. They are followed by Goldman Sachs and Nomura (around \$6 billion) while UBS and Deutsche Bank’s exposure was less than $4 billion. We can also see that, relative to their exposure, some banks like Morgan Stanley and Goldman Sachs got away with much lower losses than others (Credit Suisse and Nomura). Note that the losses in the Figure 6 were set to zero for Goldman Sachs and Deutsche Bank which reported “immaterial losses” or were “not expect to incur any loss.” ^[[@noauthor_deutsche_nodate]]
 
 ![Estimated exposure (per March 22) and reported losses](pics/cs1.png)
 
@@ -142,57 +153,54 @@ With the assumptions that the holdings remained constant since the end of the fo
 
 ## Estimated losses
 
-Assuming that the prime brokers held onto their stocks after the announcement that Archegos couldn’t follow up on the margin calls, the closing price can be used to compute the unmargined estimated losses by the end of the week, March 26. The same calculations can be done for various margin levels. Figure X shows the banks’ estimated cumulative losses for different margin rates (10, 15, 20 and 25%). With increasing margins, the estimated losses are naturally decreasing. Likewise, the estimated losses are increasing with higher initial exposure. 
- 
-What the figure doesn’t show is the effect of moral hazard due to varying leverages which can be taken on. Lower margins increase the incentives to take riskier positions because the hedge fund has less skin in the game and doesn’t have to suffer as much from possible consequences in the case the investments go south. Also, note that that these numbers are probably significantly underestimated. As we have previously seen, most of the stock concerned were soaring in the beginning of the year 2021. And therefore, Archegos through his prime brokers was most likely to top on these stocks to ride on the bullish stocks/market. 
+Assuming that the prime brokers held onto their stocks after the announcement that Archegos couldn’t follow up on the margin calls, the closing price can be used to compute the unmargined estimated losses by the end of the week, March 26. The same calculations can be done for various margin levels. Figure 7 shows the banks’ estimated cumulative losses for different margin rates (10, 15, 20 and 25%). With increasing margins, the estimated losses are naturally decreasing. Likewise, the estimated losses are increasing with higher initial exposure. 
+
+What the figure doesn’t show is the effect of moral hazard due to varying leverages which can be taken on. Lower margins increase the incentives to take riskier positions because the hedge fund has less skin in the game and doesn’t have to suffer as much from possible consequences in the case the investments go south. Also, note that these numbers are probably significantly underestimated. As we have previously seen, most of the stocks concerned were soaring in the beginning of the year 2021. Therefore, Archegos through his prime brokers was most likely to top on these stocks to ride on the bullish stocks/market. 
 
 ## Suggested margins
 
-Taking these points into consideration and given the Credit Suisse’s disclosed loss of \$4.7 billion, their margin can be estimated to be around 10% - assuming that they would not have done anything to reduce their positions by March 26. In Figure X, a 10% margin suggests an estimated loss of \$3.3 billion. First reports which estimated a between \$3 and \$4 billion strengthen the suggestion that Credit Suisse margin might not be far from 10% and that they significantly held more positions by the time of Archegos’ defaults compared to the end of 2020. Thereby, competitive banks did ask for a significantly higher margins, at least 20%, an only 5x leverage as opposed to the 10x of Credit Suisse. Deutsche Bank was even reported to increase their collateral from Archegos during the surging of the stocks they held in his stead [@kowsmann_deutsche_2021]. So, despite that Morgan Stanley was similarly exposed to Credit Suisse, the former’s estimated losses were almost half as much due to their stricter leverage demands. 
- 
-Credit Suisse’s 10% margin is also lower than the postponed introduction of 15% initial margin requirement on equity swaps which will now take effect starting October 6, 2021. So, while leverage has a proportionally big effect and would certainly have helped in the reducing the damage, the overall losses are still very high, i.e. a high margin of 25% with a moderate (here average) exposure of \$7 billion would still have resulted in an estimated loss of around $1’000 million! Thus, restrictions on leverage should not be the only response in the aftermath and naturally leads to the question, why the losses could possibly take such tremendous dimensions due to the default of a single individual actor of the financial market.
+Taking these points into consideration and given that Credit Suisse’s disclosed loss of \$4.7 billion, their margin can be estimated to be around 10% - assuming that they would not have done anything to reduce their positions by March 26. In Figure 7, a 10% margin suggests an estimated loss of \$3.3 billion. First reports which estimated a loss between \$3 and \$4 billion strengthen the suggestion that Credit Suisse margin might not be far from 10% and that they significantly held more positions by the time of Archegos’ defaults compared to the end of 2020. Thereby, competitive banks did ask for significantly higher margins, at least 20%, an only 5x leverage as opposed to the 10x of Credit Suisse. Deutsche Bank was even reported to increase their collateral from Archegos during the surging of the stocks they held in his stead (Kowsmann 2021). So, despite that Morgan Stanley was similarly exposed to Credit Suisse, the former’s estimated losses were almost half as much due to their stricter leverage demands. 
+Credit Suisse’s 10% margin is also lower than the postponed introduction of 15% initial margin requirement on equity swaps which will now take effect starting October 6, 2021. So, while leverage has a proportionally big effect and would certainly have helped in the reducing the damage, the overall losses are still very high, i.e. a high margin of 25% with a moderate (here average) exposure of \$7 billion would still have resulted in an estimated loss of around $1’000 million! Thus, restrictions on leverage should not be the only response in the aftermath and naturally leads to the question, why the losses could possibly take such tremendous dimensions due to the default of a single individual actor of the financial market. 
+
+
 
 ![The banks’ estimated cumulative losses for different levels of margin](pics/cs2.png)
 
 
 ## Overall high losses
 
-Figure X shows the banks’ holding of Archegos-linked stocks and provides some insights, how the losses could be overall so high. We can see that the banks were holding huge shares of these companies. In most cases, around 20% (Vishop, ViacomCBS, Tencent and Farfetch), and in single cases around 30% (iQYI, Discovery). In the extreme case, GSX Techedu, the prime brokers together owned almost half of the company! We can also see that Credit Suisse hold large shares even compared to the other competitive banks. Like previously, the true numbers are likely to be significantly higher because the holdings based on the filings at the end of 2020. It has been reported that Goldman Sachs increased their stake in GSX Techedu by more than 8% to 24.6% on January 29. Hence, out of the eight stocks, Credit Suisse owned in at least five instances more than 5% of the companies. 
- 
-Usually, if a person or a group acquires more than 5% of a company’s shares or oversee and material changes of 1% or more, they have to adhere to the SEC’s 13D or 13G disclosure rule and report their positions. By using synthetic financial instruments in the form of total return swap, Archegos hid their positions and obscured the risk, and therefore was able to hold a heavily directional portfolio - unknown to all the counterparties involved, which in the end led to these overall very high losses. 
+Figure 8 shows the banks’ holding of Archegos-linked stocks and provides some insights, how the losses could be overall so high. We can see that the banks were holding huge shares of these companies. In most cases, around 20% (Vishop, ViacomCBS, Tencent and Farfetch), and in single cases around 30% (iQYI, Discovery). In the extreme case, GSX Techedu, the prime brokers together owned almost half of the company! We can also see that Credit Suisse hold large shares even compared to the other competitive banks. Like previously, the true numbers are likely to be significantly higher because the holdings are based on the filings at the end of 2020. It has been reported that Goldman Sachs increased their stake in GSX Techedu by more than 8% to 24.6% on January 29, 2021. Hence, out of the eight stocks, Credit Suisse owned in at least five instances more than 5% of the companies. 
+
+Usually, if a person or a group acquires more than 5% of a company’s shares or oversees and material changes of 1% or more, they have to adhere to the SEC’s 13D or 13G disclosure rule and report their positions. By using synthetic financial instruments in the form of total return swap, Archegos hid their positions and obscured the risk, and therefore was able to hold a heavily directional portfolio - unknown to all the counterparties involved, which in the end led to these overall very high losses. 
 
 ## Regulations 
 
 The same fiasco would have probably not been possible in Europe, since in the majority of West European countries public disclosure of total return swaps exists, and thus, any positions do count towards the total holding of the stock which allows for more transparency, and hence, better risk-management. ^[[@noauthor_could_2021]] 
 
-So far, total return swaps have not been covered by any US disclosure rule. It’s been reported that the SEC is currently working on new reporting rules, i.e. including them into existing transparency rule like the disclosure form 13D or let positions count towards the 5% to bring it in line with Europe. ^[[@noauthor_credit_2021-1]]
+So far, total return swaps have not been covered by any US disclosure rule. It has been reported that the SEC is currently working on new reporting rules, i.e. including them into existing transparency rule like the disclosure form 13D or let positions count towards the 5% to bring it in line with Europe. ^[[@noauthor_credit_2021-1]]
  
-Nevertheless, it’s shocking to see, even after the financial crisis more than a decade ago, how slow the financial industry has moved to implement the necessary reforms and regulations to ensure more transparency in these exact trades of financial instruments. 
+Nevertheless, it’s shocking to see, even after the financial crisis more than a decade ago, how slow the financial industry has moved to implement the necessary reforms and regulations to ensure more transparency in these exact trades of financial instruments. ^[[@noauthor_how_2021]]
 
-![Bank's holding of Archegos-linked stocks](pics/cs3.png) ^[[@noauthor_how_2021]]
+
+
+![Bank's holding of Archegos-linked stocks](pics/cs3.png) 
 
 # Causes For The Fiasco
 
-In the previous parts we discussed how overleveraged and risky the positions was. It is clear that leverage of the position take a further look on how the leverage was achieved and  more imporatntly , whatmistakes the risk management department might have done, resulting in this riksy positions blowing up.
-
+At early stages, Archegos was driving the prices of the companies that it was targeting, turning huge profits, incentivizing Credit Suisse and other banks to lend the family office more money so that the banks could rack up more trading fees. However, the stock price increase was unsustainable and the firms that Archegos was betting on dived, activating margin calls with the banks, and leading to the implosion of Archegos and the huge losses of several banks.   
 
 ## CS400
 
-Firstly, let us discuss and present CS400. CS400 is a system developed by Credit Suisse themselves together with Palantyr Systems in 2006 and it allows hedge fund to switch and **add positions with several prime brokers** at will, quickly and without them noticing it. Such system is therefore the reason, why lenders did not know among themselves that Archegos was doing the same trades not only with them, but also with the other banks.
+A tool that enabled Credit Suisse grow in importance in the prime brokerage business is CS400, a system developed by Credit Suisse and Paladyne Systems in 2006, which allows hedge funds to switch and add positions with several prime brokers swiflty and without them noticing it. The obscure nature of this system guaranteed secrecy for hedge funds’ operations while keeping the prime brokers in dark, preventing them from observing any exposure that a hedge fund could have arranged with other banks. 
 
-How can we infer Archegos was using the system? The number 400 refers to the list of first 400 "exclusive" hedge funds CS was working with, serving as a marketing strategy , making other hedge funds want to join. 
-
-Tiger Asia, i.e. the predecessor of Archegos managed by Hwang was on that list. ^[[@noauthor_how_2021]] One could say that CS succesful project CS400 ultimately contributed to the meltdown. 
-
+The tool that allowed Credit Suisse’ grow as a key prime broker could be the reason that the bank will withdraw from its prime brokerage operations. CS400, a list of 400 hedge funds that Credit Suisse was eager to work with is where Tiger Asia, the predecessor of Archegos Capital, was enlisted, raising suspicions that Archegos Capital could have reaped the benifits of CS400 as well, however due to the secretive nature of the CS400 it can be hardly validated. ^[[@noauthor_how_2021]] 
 
 
 ## Failures of the risk mananagement
 
-The system itself was just an instrument allowing to go leveraged unnoticed, but did not cause failre of risk assessment of course. It definitely contributed to the magnitude of the blowout, but was not inherently the culprit of it.
+If we want to understand what happened, we have to understand how the risk is normally assessed and whether the measured were adhered to by Credit Suisse. 
 
-If we want to understand what was, we have to understand how the risk is normally assesed and whether the measured were adhered to by Credit Suisse.
-
-Prime-brokerage is still a little opaque and sparsely regulated business and most regulation deals with the brokers and their capital requirements, not assessing the risk of the client (Archegos in this case). However, one document we can refer to is a speech by M.A. Gadziala from the due dilligence department of SEC from 2007 about common risks in the broker-dealer relationship and how to manage them. ^[[@noauthor_sec_nodate]]
+Prime-brokerage is still a little opaque and sparsely regulated business and most regulation deals with the brokers and their capital requirements, not assessing the risk of the client (Archegos in this case). However, one document we can refer to is a speech by M.A. Gadziala from the due diligence department of SEC from 2007 about common risks in the broker-dealer relationship and how to manage them. ^[[@noauthor_sec_nodate]]
 
 Among others, there principles we deem the most important and crucial for understanding the case:
 
@@ -212,27 +220,22 @@ According to the Wall Street Journal, senior management, including the CEO of Cr
 
 ### Creation/review of internal mathematical models
 
-The financial world, especially risk management, has become largely dependent on sophisticated quantitative tools to measure and control risks. It is no surprise then that the a firm should be up-to-date with the latest developments and apply the best possible models.
+Another issue that led to the failure of Credit Suisse to monitor the deal properly was that it had not yet instituted, with respect to Archegos, the system, dynamic margining ^[[@patrick_wsj_2021]], used to monitor the bank’s risk exposure to changes in the underlying securities. The obscurity around the type of trades and the family office should have required that the bank prioritizes using this sophisticated system to prevent the failure that followed, considering that the involvement with the family office exposed the bank to huge losses. 
 
 Be it because of its size or inflexibility, according to Risk.net and a certain risk manager, Credit Suisse was still using very "1980's"-like models to measure its risks. ^[[@noauthor_how_2021]] That is of course very problematic and except for breaking the principles again, one has to ask how Credit Suisse was measuring risk with models from times, when the instruments it was measuring did not even exist yet. 
 
 ### Strong overall compliance culture at the firm
 
-Strong overall compliance means that not only people directly responsible are ought to take risk-management approaches. We would expect that senior executives would be leading this front, however, contrary was true at Credit Suisse.
-
-According to swissinfo.ch, senior executives were "too eager to chase lucrative deals, overruling risk-management warnings".^[ [@noauthor_credit_nodate-1; @times_credit_nodate]] Except for being an obvious violation of the risk management principle, it paints a very gloomy picture about the incentives of some people at the bank and how they manage investments. One can dispose of the most advanced modelling tool, but if the warnings are ignored and overruled, it renders any risk management useless.
+In light of considering the risk management system in place, Credit Suisse failed to monitor its investment with Archegos and other companies such as, Greensill, indicating that the melting of Archegos was not an isolated incident, but rather a product of the systematic approach of Credit Suisse top managers, who shut down risk managers warning them along the way. Moreover, in dealing with Greensill the bank kept doing business though there were signs of the impending crisis at Greensill, reflecting an excessively greedy approach when conducting business. Credit Suisse should put in place a stricter system of oversight and discourage risk appetite among top officers who use their power to evade following risk managers’ suggestions.    
+The people put in place to uphold the risk management failed to do so when they overruled risk managers dealing against their advice. ^[[@noauthor_credit_nodate-1; @times_credit_nodate]] 
 
 ### Effective reconciliation process to ensure data integrity and completeness
 
-It is obvious one needs data and positions in order to even conduct any risk modelling. The data of course has to be correct and complete, otherwise the results would be skewed. 
+As Archegos was not reporting any positions or data to Credit Suisse^[[@noauthor_unacceptable_nodate]] and the mathematical models in place at the bank were old to deal with the TRS^[[@noauthor_how_2021]], it means that no risk modelling was available on the hands of the bank to assess their VaR. They were lending to someone they did know anything about, who was overleveraged by using other prime brokers and hiding their positions by using the TRS. Since Credit Suisse did not have the risk profile of Archegos, it is puzzling how they determined the 10% margin requirement, which was far less than other banks, such an arbitrary decision indicates a great failure on the risk management front.  
 
-At Credit Suisse, this was the biggest violation of all, in our opinion. “It’s clear that a family office like that did not disclose positions like a normal hedge fund would do.” said Thomas Gottstein, CEO of Credit Suisse after the Archegos meltdown. ^[[@noauthor_unacceptable_nodate]]
 
-What does this statement tell us? Ultimately, except for being a violation of the above-mentioned principle, it raises a myriad of subsequent problems. Mainly, if Credit Suisse did not receive any data or positions report from Archegos, *how did Credit Suisse conduct risk modelling?*
+Our speculation is that Credit Suisse simply did not perform any risk modelling and was complacent about only controlling the position it held with Archegos itself in the TRS positions, unaware of others’ banks positions, Archegos amassed leveraged positions in the exact same companies with other lenders. This last point is quite crucial since what makes the risk of TRS acceptable for the banks is that the banks hold the collateral in their balance sheets. In this case the collateral were publicly traded stocks of the companies in which Archegos accumulated positions. Market prices of stocks, as all market prices, are determined by supply and demand which implies that the collateral that banks were holding was also subject to market forces. Given what happened it seems that Credit Suisse did not realize preemptively that the collateral they were holding was highly dependent on the willingness of other banks to hold the same collateral. This fact alone should have led Credit Suisse to ask much higher margins since what the bank would have been able to retrieve in case of default was a decreasing function of the default probability. 
 
-Our speculation is that it simply did not and was complacent about only controlling the position it held with Archegos itself in the TRS positions, unaware that by using their proprietary system CS400, Archegos amassed leveraged on the exact same positions with other lenders as well. This last point is quite crucial since what makes the risk of TRS acceptable for the banks is that the banks hold the collateral in their balance sheets. In this case the collateral were publicly traded stocks of the companies in which Archegos accumulated positions. Market prices of stocks, as all market prices, are determined by supply and demand which implies that the collateral that banks were holding was also subject to market forces. Given what happened it seems that Credit Suisse did not realize preventively that the collateral they were holding was highly dependent on the willingness of other banks to hold the same collateral. This fact alone should have led Credit Suisse to ask much higher margins since what the bank would have been able to retrieve in case of default was a decreasing function of the default probability.
-
-Lastly, it raises the question how the 10% margin requirement was determined, if there was little/no data to decide upon; our speculation is again that it might have been an arbitrary decision, which would explain why Credit Suisse required the lowest margin among lenders.
 
 ## Why did nobody notice?
 
@@ -240,9 +243,9 @@ Now that we have discussed what failures there might have been in the risk manag
 
 1. Firstly, recall how we discussed that senior executives were too eager to chase lucrative deals, **overrulling the risk management warnings**. That indicates the people actually noticed, but were simply sileneced for the sake of risky profit.  This leads us to our second pooint:
 2. Senior management uninvolvement. We have discussed this issue and again, it is sort of a self-recurring, vicious cycle type of problem. If the warnings were overruled, the senior management was in the blue, unknowing about the positions. But last point not many are discussing or writing about is our last point.
-3. Mr. Parshu Shah. He was the head of prime-brokerage risk management, hence directly overseeing funds such Archegos, included. The problem of him being in this position was that he **worked as a salesman for that exact same Archegos**. ^[[@noauthor_credit_nodate]] That to us is a massive conflict of interests. It is important to state that despite losing the job, Mr. Shah has not been accused of any misconduct or fraud and were are certainly not doing that either. Our speculation is that because of human biases, Mr. Shah might have had a somewhat close relationship with people from Archegos, not applying such scrutiny and diligence he should have, being maybe too jovial or chummy, ultimately leading to Archegos not being required or subject to deeper diligence. Of course, it the contrary could have been true, i.e. Mr. Shah was a "thief turn policeman"^[we are not implying being an Archegos salesman means being a thief and the statement serves only as a metaphor]. However, one cannot give too much leeway in this very questionable and significant event and has to certainly explore to possibility we presented above.
+3. Mr. Parshu Shah. He was the head of prime-brokerage risk management, hence directly overseeing funds such Archegos, included. The problem of him being in this position was that he **worked as a salesman for that exact same Archegos**. ^[[@noauthor_credit_nodate]] That to us is a massive conflict of interests. It is important to state that despite losing the job, Mr. Shah has not been accused of any misconduct or fraud and were are certainly not doing that either, but one has to explore the possibility of Mr. Shah being not as dilligent or scrutinizing of Archegos as he should have.
 
-This claim could be further supported by the fact that when Archegos called up the lenders meeting, not being able to answer the margin calls, Credit Suisse argued for a "take it slow appraoch" in order to protect Archegos. ^[[@mavin_credit_2021]]  So while the other banks were rushing for the exit, selling at their first opportunity, Credit Suisse waited for a week, eventually having to sell the stock it held for a rather unfavourable price.
+Credit Suisse seems to have had a rather favorable stance towards the family office, as when other banks were exiting from their relationships with Archegos Capital, the bank was reluctant to do so arguing for the “take it slow approach” ^[[@mavin_credit_2021]]. This sluggish approach by the bank led to its demise as it was the last to get off the stocks that were falling dramatically.     
 
 One could argue that because of its exposure, Credit Suisse wanted to take a pragmatic approach to cool down the situation, without any regard for Archegos. However, other lenders such as JP Morgan, Morgan Stanley or Goldman Sachs have reputation of extremely relentless, opportunistic players and we think Credit Suisse must have known this. We therefore lean to the argument that there truly was something special in the relationship with Archegos.
 
@@ -250,30 +253,31 @@ One could argue that because of its exposure, Credit Suisse wanted to take a pra
 
 # Valuation - Did The Market Overreact?
 
-In this section, we will try to estimate the intrinsic value of Credit Suisse in relation to the share price first before the Archegos blowout with data from 31.12.2020 and then after Archegos, using all available data published by Credit Suisse, Bloomberg estimates and our own calculations.
-
+In this section, we will try to estimate the intrinsic value of Credit Suisse in relation to the share price first before the Archegos blowout with data from 31.12.2020 and then after Archegos, using all available data published by Credit Suisse, Bloomberg estimates and our own calculations. 
 For the valuation, we will use a simple peers-multiple comparison as well as the Equity Excess Returns model, presented in the book *Investment Valuation* by Aswath Damodaran.^[[@damodaran_investment_2012]]
 
 ## Equity Excess Returns (EER)
 
-Since valuing financial services companies, such as banks, is rather different given their unique financing capital structure, we will be using the EER model. It bypasses the standard problem of defining total capital or free cash-flows of a financial services company by not taking them into account at all and focusing only on equity.
+Since valuing financial services companies, such as banks, is rather different given their unique financing capital structure, we will be using the EER model. It bypasses the standard problem of defining total capital or free cash-flows of a financial services company by not taking them into account at all and focusing only on equity. 
 
-From there, the logic of standard valuation methodology is consistent with other valuation methods, meaning that the value is determined as the sum of equity capital invested currently (Book Value) and the *present value of expected excess return to equity investors*. (Unless stated otherwise, we are presenting all values and calculation on a *per share basis* and in Swiss Francs)
+From there, the logic of standard valuation methodology is consistent with other valuation methods, meaning that the value is determined as the sum of equity capital invested currently (book value) and the *present value of expected excess return to equity investors*. Unless stated otherwise, we are presenting all values and calculation on a per share basis and in Swiss Francs. 
 
 $$
       \text{Value of Equity} =  BV_{t-1} + \sum_{t=1}{\frac{\text{Equity Excess Return}_t}{(1+\text{Cost of Equity})^t}}
 $$
-While book value of the firm is virtually given and can be read off of the financial statements, EER are the part we have to calculate and impose certain assumptions and limits, which we will discuss further in the next part.
 
-Before we do that, let us first show how EER is calculated:
+While book value of the firm is virtually given and can be read off the financial statements, EER are the part we have to calculate and impose certain assumptions and limits, which we will discuss further in the next part. 
+
+Before we do that, let us first show how EER is calculated: 
 
 $$
 EER = (ROE_t-\text{Cost of Equity}_t) \times BV_t
 $$
 
-The intuition behind this calculation is very simple: the excess return to the equity of the firm is everything the firms earns on its equity/capital invested (Book value) minus the cost necessary to use to produce those returns.
+The intuition behind this calculation is very simple: the excess return to the equity of the firm is everything the firms earns on its equity/capital invested (book value) minus the cost necessary to use to produce those returns. 
 
-Moreover, we need to know or rather estimate the book value of the firm for each year. That we can do, under certain assumptions, by adding net income net of dividends (retained earnings) from the previous year to the book value from the previous year. The assumption is that those retained earnings will be added to book value and further reinvested, producing more earnings.
+Moreover, we need to know or rather estimate the book value of the firm for each year. That we can do, under certain assumptions, by adding net income net of dividends (retained earnings) from the previous year to the book value from the previous year. The assumption is that those retained earnings will be added to book value and further reinvested, producing more earnings. 
+
 
 $$
 BV_{t+1} = BV_t + EPS_t\times(1-\text{dividend payout ratio})
@@ -283,7 +287,7 @@ $$
 
 ### Book value as a measure of equity capital invested
 
-We assume that book value of the firm is equal to the equity capital invested. While it certainly might be influenced by accounting decision and procedures, the fact we are using it for financial services company makes it a sufficiently reliable measure. This stems from the fact that:
+We assume that book value of the firm is equal to the equity capital invested. While it certainly might be influenced by accounting decision and procedures, the fact we are using it for financial services company makes it a sufficiently reliable measure. This stems from the fact that: 
 
 - most assets of a financial services firms are financial assets and are marked up to market, which makes the valuation precise
 - depreciation, which is normally a big factor influencing book value of manufacturing firms, is negligible with financial services firms.
@@ -312,14 +316,14 @@ The first book value comes from the the filling of Credit Suisse obtained from B
 
 ### EPS / Net income
 
-For the first three years, i.e. 2021, 2022 and 2023, we used the the consesus of analysts forecast of the EPS. We feel this approach is more precise than using a constant ROE as in the base model, given the fact Credit Suisse is a stock followed by roughly 300 analysts.
+For the first three years, i.e., 2021, 2022 and 2023, we used the consensus of analysts forecast of the EPS. We feel this approach is more precise than using a constant ROE as in the base model, given the fact Credit Suisse is a stock followed by roughly 300 analysts. 
 
-From year four, we grow the earnings by Sustanaible Growth Rate, which is calculated as 10-year average of ROE net of long-term dividend payout ratio. This is method works under the assumption that Credit Suisse will be able to reinvested the retained earnings effectively. In our case the sustainable growth rate was at 1.4%, stemming from 10-year ROE average of 2% and dividend payout ratio of 28.2%, which is both conservative and attainable in our opinion.
+From year four, we grow the earnings by Sustainable Growth Rate, which is calculated as 10-year average of ROE net of long-term dividend payout ratio. This is method works under the assumption that Credit Suisse will be able to reinvest the retained earnings effectively. In our case, the sustainable growth rate was at 1.4%, stemming from 10-year ROE average of 2% and dividend payout ratio of 28.2%, which is both conservative and attainable in our opinion. 
 
 
 ### Equity cost 
 
-We obtained value of 11.5% from Bloomberg and assume it remaind constant across the whole period.
+We obtained value of 11.5% from Bloomberg and assume it remained constant across the whole period. 
 
 ### Terminal value
 
@@ -330,6 +334,7 @@ Because of this, we will have to estimate EER also in perpetuity by using the Go
 $$
 EER_{perpetuity} = \frac{EPS_T}{\text{equity cost} + \text{sustainable growth rate}}
 $$
+\pagebreak 
 
 ### Valuation Table
 
@@ -404,15 +409,14 @@ According to our valuation, we can see we arrive to intrinsic value that is almo
 
 ## Relative valuation
 
-To further value credit Suisse we implement a relative valuation of credit Suisse based on a well-diversified peer group. Give that credit Suisse has several operating departments the use of a single multiple for the company is not very appropriate given that different department's trade at different multiples. However, for the sake of simplicity, we will here use a single multiple for the whole credit Suisse and only a peer group. The multiples that we analyse are forward price to earnings (both 12 and 24 months ahead ) and price to book. We decided not to use the classic EV/EBITDA since this multiple is not recommended by practitioners to value financial institutions.  
+We implement a relative valuation of Credit Suisse based on a well-diversified peer group. Given that Credit Suisse has several operating departments the use of a single multiple for the company is not very appropriate, especially because different department’s trade at different multiples. However, for the sake of simplicity, we will here use a single multiple for the whole Credit Suisse and only a peer group. The multiples that we analyze are forward price to earnings (both 12 and 24 months ahead) and price to book. We decided not to use the classic EV/EBITDA since this multiple is not recommended by practitioners to value financial institutions. 
+First, we used the peer group offered by Bloomberg which is composed of 12 financial institutions across different regions. The peer group includes some of the banks that were dealing with Archegos together with CS such as JPM, Morgan Stanley, Goldman Sachs, and Nomura. The prices are as of 04/06/2021 so here we are only considering the “post Archegos” values. For the earnings, we are using the median Bloomberg estimates for 12 and 24 months ahead of EPS as we did for CS in the EES model. Finally, the book value of equity is the adjusted value offered by Bloomberg which is based on the last quarter’s reported value. 
 
-First, we used the peer group offered by Bloomberg which is composed of 12 financial institutions across different regions. The peer group includes some of the banks that were dealing with Archegos together with CS such as JPM, Morgan Stanley, Goldman Sachs, and Nomura. The prices are as of 04/06/2021 so here we are only considering the “post Archegos” values. For the earnings, we are using the median Bloomberg estimates for 12 and 24 months ahead of EPS as we did for CS in the EES model. Finally, the book value of equity is the adjusted value offered by Bloomberg which is based on the last quarter's reported value. 
-
-To obtain CS share price using  P/E multiples we multiplied the forecasted net income for 2021 by the median of the peer group ex CS. Both the 12 and 14 month ahead medians give very similar values since in our peer group the forecasted EPS are expected to remain relatively constant over the next 2  years. Using CS’s 2021 earnings we obtain an estimated price of 6.15 CHF which is well below the current share price of 9.90 CHF. The reason for such a result is that this year's net income results very depressed as it includes the Archgos related losses which are estimated to be around 5 billion $ in total. When using the next year's forecasted NI we obtain an estimated price of 14 CHF which seems more reasonable given that its calculation partially omits the extraordinary losses of 2021.  
+To obtain CS share price using P/E multiples we multiplied the forecasted net income for 2021 by the median of the peer group ex CS. Both the 12 and 14 month ahead medians give very similar values since in our peer group the forecasted EPS are expected to remain relatively constant over the next 2 years. Using CS’s 2021 earnings we obtain an estimated price of 6.15 CHF which is well below the current share price of 9.90 CHF. The reason for such a result is that this year’s net income results very depressed as it includes the Archegos related losses which are estimated to be around 5 billion $ in total. When using the next year’s forecasted NI, we obtain an estimated price of 14 CHF which seems more reasonable given that its calculation partially omits the extraordinary losses of 2021. 
 
 When using the P/B multiple Credit Suisse appears to be highly undervalued compared to the peer group. Using the median P/B and current CS’s book value of equity we obtain an estimated share price of 29 CHF which is more than 3 times the current price. The reason for this extreme result is that CS has a mere P/B of 0.56 while the median of the peer group is 1.75. 
 
-Overall, using multiples leads to the conclusion that if CS were the same as its peer group, it should trade at a much higher price. By assigning equal weight on the P/B and the P/E we obtain an estimated price of 21.8 which gives an upside potential of more than 100%. This extreme result highlights the limitations of using relative valuation when analyzing financial firms. The relative valuation assumes that similar firms should trade at similar prices and by similar, it means that they operate in the same business segment. However, as the Credit Suisse case shows, operating in the same segment doesn’t imply that investors believe that the firms have the same risk profile i.e. same discount rate. These results show that investors apply a much higher discount rate to Credit Suisse compared to its Peer Group. However, this discount rate is not taken into consideration when using multiples and this results in an artificial undervaluation of Credit Suisse. As result, despite multiples show an apparent undervaluation of CS we believe that the firm remains fairly valued given the discount rate that investors apply to credit Suisse Business.  
+Overall, using multiples leads to the conclusion that if CS were the same as its peer group, it should trade at a much higher price. By assigning equal weight on the P/B and the P/E we obtain an estimated price of 21.8 which gives an upside potential of more than 100%. This extreme result highlights the limitations of using relative valuation when analyzing financial firms. The relative valuation assumes that similar firms should trade at similar prices and by similar, it means that they operate in the same business segment. However, as the Credit Suisse case shows, operating in the same segment doesn’t imply that investors believe that the firms have the same risk profile i.e., same discount rate. These results show that investors apply a much higher discount rate to Credit Suisse compared to its peer group. However, this discount rate is not taken into consideration when using multiples and this results in an artificial undervaluation of Credit Suisse. As result, despite multiples show an apparent undervaluation of CS, we believe that the firm remains fairly valued given the discount rate that investors apply to Credit Suisse Business. 
 
 \pagebreak 
 
@@ -439,13 +443,11 @@ Overall, using multiples leads to the conclusion that if CS were the same as its
 
 # Conclusion
 
-We saw what role the leverage play, how it was achieved through TRSs and the CS400 system and lastly, what failures there were on the part of the risk management department. One could argue that leverage, swaps or other derivative instruments which might be opaque for some, are inherently evil and should be banned. Other could claim that it is entirely fault of Credit Suisse for losing years worth of profit in a matter of literal days, thus being completely incompetent and should not do any business in this area.
+We discussed what role leverage played and how it was achieved through TRS and the CS400 system. Moreover we elaborated how risk management failed to protect Credit Suisse from the Archegos Capital fallout. We argued that it was leverage and Credit Suisse’ corporate culture that led to the bank’s demise. 
 
-We are of different opinion in regard to both statements; swaps are just an instrument as any other, which by definition do not favor any party and does not pose any inherent wickedness. We are of the opinion that Credit Suisse still remains a world-class bank, full of smart and dilligent people and it would be unfair to write off roughly fifty thousands employees as incompetent for the doing of few.
+It remains to be seen how will Archegos Capital fallout affect the regulation of TRS and family offices’, since the regulators are reluctant to let such events go unchecked and impact the financial markets. Moreover, the crisis at the bank will have ramifications on the corporate culture on the bank calling for a more stringent compliance culture. 
 
-That leads us to our conclusion. Can, or rather should, the compliance culture, the corporate governance mechanisms and certain aspects of risk management be improved at Credit Suisse? Definitely yes.
-
-But in the end, we believe it was a doing of a few “bad apples” and once again proves that a chain is as strong as its weakest link.
+The recent events will cause Credit Suisse to shift its focus to its main business, wealth management, and downsize its prime brokerage business.  To conclude this paper, Credit Suisse remains a world-class bank, however, its foundations are being tested. 
 
 
 \pagebreak 
